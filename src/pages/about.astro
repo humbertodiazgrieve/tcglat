@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Acerca de" description="Acerca de tcglat.com">
+  <Header />
+  
+  <main class="max-w-2xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Acerca de tcglat.com</h1>
+    
+    <div class="prose prose-lg">
+      <p class="text-muted mb-4">
+        tcglat.com es el destino definitivo para contenido de Trading Card Games en español. 
+        Compartimos noticias, guías, estrategias y análisis para jugadores de Latinoamérica.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-8 mb-4">Nuestra misión</h2>
+      <p class="text-muted mb-4">
+        Hacer accesible el mundo de los TCG a jugadores hispanohablantes, proporcionando 
+        contenido de calidad en español para todas las nivel de experiencia.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-8 mb-4">TCGs que cubrimos</h2>
+      <ul class="list-disc pl-6 text-muted space-y-2">
+        <li>Pokémon TCG</li>
+        <li>Magic: The Gathering</li>
+        <li>Yu-Gi-Oh!</li>
+        <li>One Piece Card Game</li>
+        <li>Digimon Card Game</li>
+        <li>Disney Lorcana</li>
+        <li>Star Wars: Unlimited</li>
+        <li>Flesh and Blood</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold mt-8 mb-4">Contacto</h2>
+      <p class="text-muted">
+        ¿Tienes sugerencias o quieres colaborar? Escríbenos a contacto@tcglat.com
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

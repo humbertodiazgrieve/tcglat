@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime()
+);
+---
+
+<BaseLayout title="Inicio" description="tcglat.com - Trading Card Games en Español">
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <!-- Contenido principal -->
+      <div class="lg:col-span-8">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6">Últimos artículos</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          {posts.length === 0 ? (
+            <p class="text-center text-gray-500 py-12 col-span-2">No hay artículos aún. ¡Próximamente!</p>
+          ) : (
+            posts.map(post => <PostCard post={post} />)
+          )}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-20">
+          <Sidebar />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

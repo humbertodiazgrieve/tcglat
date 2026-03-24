@@ -1,0 +1,31 @@
+---
+const { post } = Astro.props;
+const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<article class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
+  {post.data.imagen && (
+    <a href={`/blog/${post.data.categoria}/${post.slug}`}>
+      <img 
+        src={post.data.imagen} 
+        alt={post.data.titulo}
+        class="w-full h-52 object-cover"
+      />
+    </a>
+  )}
+  <div class="p-5">
+    <div class="flex items-center gap-2 text-xs mb-3">
+      <span class="px-2 py-1 bg-brand-blue text-white font-semibold uppercase rounded">{post.data.categoria}</span>
+      <span class="text-gray-400">•</span>
+      <time class="text-gray-500">{fecha}</time>
+    </div>
+    <h2 class="text-lg font-bold text-gray-900 mb-2 leading-snug">
+      <a href={`/blog/${post.data.categoria}/${post.slug}`} class="hover:text-brand-red transition-colors">
+        {post.data.titulo}
+      </a>
+    </h2>
+    <p class="text-sm text-gray-600 leading-relaxed line-clamp-2">
+      {post.data.descripcion}
+    </p>
+  </div>
+</article>

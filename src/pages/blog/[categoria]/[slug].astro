@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { categoria: post.data.categoria, slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { headings, Content } = await post.render();
+
+const allPosts = await getCollection('posts');
+const relatedPosts = allPosts
+  .filter(p => p.data.categoria === post.data.categoria && p.slug !== post.slug)
+  .slice(0, 3);
+
+const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', { 
+  day: 'numeric', 
+  month: 'long', 
+  year: 'numeric' 
+});
+---
+
+<BaseLayout title={post.data.titulo} description={post.data.descripcion}>
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <!-- Artículo principal -->
+      <div class="lg:col-span-8">
+        <!-- Categoría -->
+        <div class="mb-4">
+          <a href={`/blog/categoria/${post.data.categoria}`} class="text-xs font-semibold text-white bg-brand-blue px-3 py-1.5 rounded uppercase tracking-wider hover:bg-brand-red transition-colors">
+            {post.data.categoria}
+          </a>
+        </div>
+
+        <!-- Título -->
+        <h1 class="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+          {post.data.titulo}
+        </h1>
+
+        <!-- Meta -->
+        <div class="flex items-center gap-2 md:gap-3 text-sm text-gray-500 mb-6">
+          <span>Por: <strong class="text-gray-700">{post.data.autor || 'tcglat'}</strong></span>
+          <span>|</span>
+          <time datetime={post.data.fecha}>{fecha}</time>
+        </div>
+
+        <!-- Imagen destacada -->
+        {post.data.imagen && (
+          <img 
+            src={post.data.imagen} 
+            alt={post.data.titulo}
+            class="w-full h-48 md:h-80 object-cover rounded-xl mb-8"
+          />
+        )}
+
+        <!-- Contenido -->
+        <div class="bg-white rounded-xl border border-gray-200 p-4 md:p-8">
+          <article class="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-brand-blue prose-strong:text-gray-900 prose-li:text-gray-700 prose-img:rounded-lg prose-table:w-full prose-th:bg-gray-100 prose-th:p-3 prose-td:p-3 prose-td:border prose-td:border-gray-200">
+            <Content />
+          </article>
+        </div>
+
+        <!-- Artículos relacionados -->
+        {relatedPosts.length > 0 && (
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Artículos relacionados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+              {relatedPosts.map(related => (
+                <a href={`/blog/${related.data.categoria}/${related.slug}`} class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow group">
+                  {related.data.imagen && (
+                    <img 
+                      src={related.data.imagen} 
+                      alt={related.data.titulo}
+                      class="w-full h-32 sm:h-36 object-cover"
+                    />
+                  )}
+                  <div class="p-4">
+                    <p class="text-xs text-brand-blue font-medium uppercase mb-1">{related.data.categoria}</p>
+                    <h3 class="text-sm font-semibold text-gray-800 group-hover:text-brand-red transition-colors line-clamp-2 leading-snug">
+                      {related.data.titulo}
+                    </h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-4">
+        <div class="lg:sticky lg:top-20 space-y-6">
+          <!-- Resumen / Insights -->
+          {post.data.insights && post.data.insights.length > 0 && (
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+              <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Resumen</h3>
+              <ul class="space-y-2.5">
+                {post.data.insights.map(insight => (
+                  <li class="flex items-start gap-2 text-sm text-gray-700">
+                    <svg class="w-4 h-4 text-brand-blue mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>{insight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Índice -->
+          {headings && headings.length > 0 && (
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+              <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Índice</h3>
+              <ul class="space-y-2">
+                {headings.map((heading, i) => (
+                  <li style={`padding-left: ${(heading.depth - 1) * 1}rem`}>
+                    <a href={`#${heading.slug}`} class="text-sm text-gray-600 hover:text-brand-red transition-colors">
+                      {i + 1}. {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Categorías -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Categorías</h3>
+            <div class="flex flex-wrap gap-2">
+              <a href="/blog/categoria/noticias" class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Noticias</a>
+              <a href="/blog/categoria/guias" class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Guías</a>
+              <a href="/blog/categoria/estrategia" class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Estrategia</a>
+              <a href="/blog/categoria/analisis" class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Análisis</a>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+              <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Tags</h3>
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map(tag => (
+                  <span class="text-xs px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 rounded-full">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

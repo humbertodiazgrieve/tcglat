@@ -1,0 +1,55 @@
+---
+const { pathname } = Astro.url;
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/blog/categoria/noticias', label: 'Noticias' },
+  { href: '/blog/categoria/guias', label: 'Guías' },
+  { href: '/blog/categoria/estrategia', label: 'Estrategia' },
+  { href: '/blog/categoria/analisis', label: 'Análisis' },
+];
+---
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="text-xl font-bold tracking-tight text-gray-900">
+      tcglat<span class="text-brand-red">.com</span>
+    </a>
+
+    <nav class="hidden md:flex gap-8">
+      {links.map(link => (
+        <a 
+          href={link.href} 
+          class={`text-sm transition-colors ${
+            pathname === link.href 
+              ? 'text-brand-red font-semibold' 
+              : 'text-gray-600 hover:text-brand-red'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <button id="menu-toggle" class="md:hidden text-gray-700 p-2" aria-label="Menú">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3">
+    {links.map(link => (
+      <a href={link.href} class={`text-sm py-2 ${pathname === link.href ? 'text-brand-red font-semibold' : 'text-gray-600'}`}>
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</div>
+
+<script>
+  document.getElementById('menu-toggle')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>
