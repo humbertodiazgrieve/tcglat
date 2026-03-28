@@ -1,11 +1,17 @@
 ---
-const { post } = Astro.props;
+const { post, tipo } = Astro.props;
 const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+
+const tipoPost = tipo || post.data.tipo || 'pokemon';
+
+const link = tipoPost 
+  ? `/${tipoPost}/${post.data.categoria}/${post.slug}` 
+  : `/blog/${post.data.categoria}/${post.slug}`;
 ---
 
 <article class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow">
   {post.data.imagen && (
-    <a href={`/blog/${post.data.categoria}/${post.slug}`}>
+    <a href={link}>
       <img 
         src={post.data.imagen} 
         alt={post.data.titulo}
@@ -20,7 +26,7 @@ const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', { day: 'nume
       <time class="text-gray-500">{fecha}</time>
     </div>
     <h2 class="text-lg font-bold text-gray-900 mb-2 leading-snug">
-      <a href={`/blog/${post.data.categoria}/${post.slug}`} class="hover:text-brand-red transition-colors">
+      <a href={link} class="hover:text-brand-red transition-colors">
         {post.data.titulo}
       </a>
     </h2>

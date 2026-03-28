@@ -1,6 +1,7 @@
 ---
 titulo: "Meta Report: Los mejores mazos de Pokémon TCG en Marzo 2025"
 descripcion: "Análisis completo del meta actual de Pokémon TCG. Conoce los mazos competitivos más fuertes y las estrategias ganadoras."
+tipo: "pokemon"
 categoria: "analisis"
 fecha: "2025-03-22"
 imagen: "/images/meta-report-pokemon.svg"

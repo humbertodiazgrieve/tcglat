@@ -2,37 +2,136 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import PostCard from '../components/PostCard.astro';
-import Sidebar from '../components/Sidebar.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('posts')).sort(
-  (a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime()
-);
+const posts = await getCollection('posts');
+
+const tiposTCG = [
+  { 
+    id: 'pokemon', 
+    nombre: 'Pokémon TCG', 
+    descripcion: 'El juego de cartas más icónico del mundo. Atrapa, entrena y lucha.',
+    color: 'from-yellow-400 to-yellow-600',
+    bgColor: 'bg-yellow-50',
+    borderColor: 'border-yellow-200',
+    textColor: 'text-yellow-700',
+    icon: '⚡',
+    postsCount: posts.filter(p => p.data.tipo === 'pokemon').length
+  },
+  { 
+    id: 'yugioh', 
+    nombre: 'Yu-Gi-Oh!', 
+    descripcion: 'El juego de cartascoleccionables definitivo. Los juegos nunca terminan.',
+    color: 'from-purple-600 to-purple-800',
+    bgColor: 'bg-purple-50',
+    borderColor: 'border-purple-200',
+    textColor: 'text-purple-700',
+    icon: '👑',
+    postsCount: posts.filter(p => p.data.tipo === 'yugioh').length
+  },
+  { 
+    id: 'magic', 
+    nombre: 'Magic: The Gathering', 
+    descripcion: 'El precursor de los TCG. Magia, estrategia y un multiverso infinito.',
+    color: 'from-gray-600 to-gray-800',
+    bgColor: 'bg-gray-50',
+    borderColor: 'border-gray-200',
+    textColor: 'text-gray-700',
+    icon: '🪄',
+    postsCount: posts.filter(p => p.data.tipo === 'magic').length
+  },
+  { 
+    id: 'lorcana', 
+    nombre: 'Disney Lorcana', 
+    descripcion: 'Donde la magia de Disney se encuentra con la estrategia TCG.',
+    color: 'from-amber-300 to-amber-500',
+    bgColor: 'bg-amber-50',
+    borderColor: 'border-amber-200',
+    textColor: 'text-amber-700',
+    icon: '✨',
+    postsCount: posts.filter(p => p.data.tipo === 'lorcana').length
+  },
+  { 
+    id: 'onepiece', 
+    nombre: 'One Piece Card Game', 
+    descripcion: 'Embárcate en una aventura piratesca. ¡Serás el Rey de los Piratas!',
+    color: 'from-red-500 to-red-700',
+    bgColor: 'bg-red-50',
+    borderColor: 'border-red-200',
+    textColor: 'text-red-700',
+    icon: '🏴‍☠️',
+    postsCount: posts.filter(p => p.data.tipo === 'onepiece').length
+  },
+];
+
+const categorias = [
+  { href: '/blog/categoria/noticias', label: 'Noticias', icon: '📰' },
+  { href: '/blog/categoria/guias', label: 'Guías', icon: '📖' },
+  { href: '/blog/categoria/estrategia', label: 'Estrategia', icon: '🎯' },
+  { href: '/blog/categoria/analisis', label: 'Análisis', icon: '📊' },
+];
 ---
 
-<BaseLayout title="Inicio" description="tcglat.com - Trading Card Games en Español">
+<BaseLayout title=" tcglat - Tu portal de TCG en Español" description=" tcglat.com - El mejor contenido sobre Trading Card Games: Pokémon, Yu-Gi-Oh!, Magic, Lorcana y One Piece.">
   <Header />
   
   <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-      <!-- Contenido principal -->
-      <div class="lg:col-span-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-6">Últimos artículos</h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
-          {posts.length === 0 ? (
-            <p class="text-center text-gray-500 py-12 col-span-2">No hay artículos aún. ¡Próximamente!</p>
-          ) : (
-            posts.map(post => <PostCard post={post} />)
-          )}
-        </div>
-      </div>
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        ¿Cuál es tu <span class="text-brand-red">TCG</span> favorito?
+      </h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Explora contenido exclusivo, guías, estrategias y noticias sobre los mejores juegos de cartas colecionables.
+      </p>
+    </div>
 
-      <!-- Sidebar -->
-      <div class="lg:col-span-4">
-        <div class="lg:sticky lg:top-20">
-          <Sidebar />
-        </div>
+    <!-- TCG Selector -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-12">
+      {tiposTCG.map(tipo => (
+        <a 
+          href={`/${tipo.id}`}
+          class={`group relative overflow-hidden ${tipo.bgColor} ${tipo.borderColor} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
+        >
+          <div class={`absolute inset-0 bg-gradient-to-br ${tipo.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
+          
+          <div class="relative">
+            <span class="text-4xl mb-4 block">{tipo.icon}</span>
+            <h2 class={`text-xl font-bold ${tipo.textColor} mb-2`}>
+              {tipo.nombre}
+            </h2>
+            <p class="text-sm text-gray-600 mb-4">
+              {tipo.descripcion}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class={`text-xs font-medium ${tipo.textColor} bg-white/60 px-3 py-1 rounded-full`}>
+                {tipo.postsCount} artículo{tipo.postsCount !== 1 ? 's' : ''}
+              </span>
+              <span class="text-sm font-medium text-gray-500 group-hover:text-brand-red transition-colors flex items-center gap-1">
+                Ver contenido
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Categorías Generales -->
+    <div class="border-t border-gray-200 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">O explora por categoría</h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        {categorias.map(cat => (
+          <a 
+            href={cat.label} 
+            class="flex items-center gap-2 px-5 py-3 bg-white border border-gray-200 rounded-xl text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
+          >
+            <span>{cat.icon}</span>
+            <span class="font-medium">{cat.label}</span>
+          </a>
+        ))}
       </div>
     </div>
   </main>

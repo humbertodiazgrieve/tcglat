@@ -5,6 +5,7 @@ const posts = defineCollection({
   schema: z.object({
     titulo: z.string(),
     descripcion: z.string(),
+    tipo: z.enum(['pokemon', 'yugioh', 'magic', 'lorcana', 'onepiece']).default('pokemon'),
     categoria: z.enum(['noticias', 'guias', 'estrategia', 'analisis']),
     fecha: z.string().transform(str => new Date(str)),
     imagen: z.string().optional(),

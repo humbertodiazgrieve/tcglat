@@ -1,6 +1,7 @@
 ---
 titulo: "Build & Battle de Pokémon TCG: Cómo dominar los eventos de Prelanzamiento"
 descripcion: "Guía completa sobre las Cajas de Combina y Combate (Build & Battle) de Pokémon TCG. Aprende a armar tu mazo de Prelanzamiento, conoce las 4 promos exclusivas de Megaevolución – Equilibrio Perfecto y domina el formato de 40 cartas."
+tipo: "pokemon"
 categoria: "guias"
 fecha: "2026-03-21"
 imagen: "/images/build-battle-prelanzamiento.svg"

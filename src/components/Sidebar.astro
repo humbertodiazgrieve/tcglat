@@ -1,12 +1,33 @@
 ---
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('posts')).sort(
+const { tipo } = Astro.props;
+
+let posts = (await getCollection('posts')).sort(
   (a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime()
 );
 
-const categorias = [...new Set(posts.map(post => post.data.categoria))];
+if (tipo) {
+  posts = posts.filter(post => post.data.tipo === tipo);
+}
+
+const categorias = ['noticias', 'guias', 'estrategia', 'analisis'];
 const recentPosts = posts.slice(0, 5);
+
+const tiposInfo = {
+  pokemon: { nombre: 'Pokémon TCG', color: 'bg-yellow-500' },
+  yugioh: { nombre: 'Yu-Gi-Oh!', color: 'bg-purple-600' },
+  magic: { nombre: 'Magic: The Gathering', color: 'bg-gray-700' },
+  lorcana: { nombre: 'Disney Lorcana', color: 'bg-amber-400' },
+  onepiece: { nombre: 'One Piece Card Game', color: 'bg-red-600' },
+};
+
+const getLink = (cat, slug) => {
+  if (tipo) {
+    return `/${tipo}/${cat}/${slug}`;
+  }
+  return `/blog/${cat}/${slug}`;
+};
 ---
 
 <aside class="space-y-6">
@@ -25,18 +46,40 @@ const recentPosts = posts.slice(0, 5);
     </div>
   </div>
 
+  <!-- Selector de TCG (si no hay tipo seleccionado) -->
+  {!tipo && (
+    <div class="bg-white rounded-xl border border-gray-200 p-5">
+      <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Mi TCG</h3>
+      <div class="flex flex-col gap-2">
+        {Object.entries(tiposInfo).map(([key, info]) => (
+          <a 
+            href={`/${key}`} 
+            class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+          >
+            <span class={`w-3 h-3 rounded-full ${info.color}`}></span>
+            {info.nombre}
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+
   <!-- Categorías -->
   <div class="bg-white rounded-xl border border-gray-200 p-5">
     <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Categorías</h3>
     <div class="flex flex-wrap gap-2">
-      {categorias.map(cat => (
-        <a 
-          href={`/blog/categoria/${cat}`} 
-          class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors capitalize"
-        >
-          {cat}
-        </a>
-      ))}
+      {categorias.map(cat => {
+        const catPosts = posts.filter(p => p.data.categoria === cat);
+        const href = tipo ? `/${tipo}/${cat}` : `/blog/categoria/${cat}`;
+        return (
+          <a 
+            href={href}
+            class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors capitalize"
+          >
+            {cat} ({catPosts.length})
+          </a>
+        );
+      })}
     </div>
   </div>
 
@@ -46,7 +89,7 @@ const recentPosts = posts.slice(0, 5);
     <ul class="space-y-4">
       {recentPosts.map(post => (
         <li>
-          <a href={`/blog/${post.data.categoria}/${post.slug}`} class="group flex gap-3">
+          <a href={getLink(post.data.categoria, post.slug)} class="group flex gap-3">
             {post.data.imagen && (
               <img 
                 src={post.data.imagen} 

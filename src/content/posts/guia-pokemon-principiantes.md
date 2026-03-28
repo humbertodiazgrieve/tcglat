@@ -1,6 +1,7 @@
 ---
 titulo: "Guía completa: Cómo empezar en Pokémon TCG en 2025"
 descripcion: "Una guía paso a paso para principiantes que quieren comenzar a jugar a Pokémon Trading Card Game. Todo lo que necesitas saber."
+tipo: "pokemon"
 categoria: "guias"
 fecha: "2025-03-23"
 imagen: "/images/guia-pokemon-principiantes.svg"

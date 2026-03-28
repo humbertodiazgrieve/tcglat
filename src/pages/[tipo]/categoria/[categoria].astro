@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import PostCard from '../../../components/PostCard.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const tipos = ['pokemon', 'yugioh', 'magic', 'lorcana', 'onepiece'];
+  const categorias = ['noticias', 'guias', 'estrategia', 'analisis'];
+  
+  const paths = [];
+  
+  for (const tipo of tipos) {
+    for (const cat of categorias) {
+      const tipoPosts = posts.filter(p => p.data.tipo === tipo && p.data.categoria === cat);
+      if (tipoPosts.length > 0) {
+        paths.push({
+          params: { tipo, categoria: cat },
+          props: { 
+            tipo, 
+            categoria: cat,
+            posts: tipoPosts
+          }
+        });
+      }
+    }
+  }
+  
+  return paths;
+}
+
+const { tipo, categoria, posts } = Astro.props;
+
+const tiposInfo = {
+  pokemon: { nombre: 'Pokémon TCG', color: 'bg-yellow-500' },
+  yugioh: { nombre: 'Yu-Gi-Oh!', color: 'bg-purple-600' },
+  magic: { nombre: 'Magic: The Gathering', color: 'bg-gray-700' },
+  lorcana: { nombre: 'Disney Lorcana', color: 'bg-amber-400' },
+  onepiece: { nombre: 'One Piece Card Game', color: 'bg-red-600' },
+};
+
+const info = tiposInfo[tipo];
+const titulo = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime()
+);
+
+const otrasCategorias = ['noticias', 'guias', 'estrategia', 'analisis'].filter(c => c !== categoria);
+---
+
+<BaseLayout title={`${titulo} de ${info.nombre} | tcglat.com`} description={`Artículos de ${titulo} sobre ${info.nombre}`}>
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-brand-red">Inicio</a>
+      <span>/</span>
+      <a href={`/${tipo}`} class="hover:text-brand-red flex items-center gap-1">
+        <span class={`w-2 h-2 rounded-full ${info.color}`}></span>
+        {info.nombre}
+      </a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">{titulo}</span>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+        {titulo} <span class="text-brand-red">{info.nombre}</span>
+      </h1>
+      <p class="text-sm text-gray-500">{posts.length} artículo{posts.length !== 1 ? 's' : ''}</p>
+    </header>
+
+    <!-- Quick Links otras categorías -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      {otrasCategorias.map(cat => (
+        <a 
+          href={`/${tipo}/${cat}`}
+          class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors"
+        >
+          {cat.charAt(0).toUpperCase() + cat.slice(1)}
+        </a>
+      ))}
+      <a 
+        href={`/${tipo}`}
+        class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors"
+      >
+        Ver todos
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <!-- Contenido principal -->
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          {sortedPosts.map(post => <PostCard post={post} tipo={tipo} />)}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-20">
+          <Sidebar tipo={tipo} />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,6 +1,7 @@
 ---
 titulo: "Las 7 expansiones de Magic 2026: De Marvel a Star Trek, el año más ambicioso"
 descripcion: "Guía completa de las 7 expansiones de Magic: The Gathering para 2026. Fechas de lanzamiento, detalles de Lorwyn Eclipsado, TMNT, Strixhaven, Marvel Super Heroes, The Hobbit, Reality Fracture y Star Trek."
+tipo: "magic"
 categoria: "noticias"
 fecha: "2026-03-28"
 imagen: "/images/magic-2026-expansiones.svg"
