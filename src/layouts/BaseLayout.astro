@@ -38,4 +38,16 @@ const { title, description } = Astro.props;
     max-width: 100%;
     height: auto;
   }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  details > summary::marker {
+    display: none;
+  }
+  details[open] > summary svg {
+    transform: rotate(180deg);
+  }
 </style>

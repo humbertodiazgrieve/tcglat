@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
-import PostCard from '../../../components/PostCard.astro';
-import Sidebar from '../../../components/Sidebar.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -16,16 +16,14 @@ export async function getStaticPaths() {
   for (const tipo of tipos) {
     for (const cat of categorias) {
       const tipoPosts = posts.filter(p => p.data.tipo === tipo && p.data.categoria === cat);
-      if (tipoPosts.length > 0) {
-        paths.push({
-          params: { tipo, categoria: cat },
-          props: { 
-            tipo, 
-            categoria: cat,
-            posts: tipoPosts
-          }
-        });
-      }
+      paths.push({
+        params: { tipo, categoria: cat },
+        props: { 
+          tipo, 
+          categoria: cat,
+          posts: tipoPosts
+        }
+      });
     }
   }
   
@@ -97,7 +95,11 @@ const otrasCategorias = ['noticias', 'guias', 'estrategia', 'analisis'].filter(c
       <!-- Contenido principal -->
       <div class="lg:col-span-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
-          {sortedPosts.map(post => <PostCard post={post} tipo={tipo} />)}
+          {sortedPosts.length === 0 ? (
+            <p class="text-center text-gray-500 py-12 col-span-2">No hay artículos en esta categoría.</p>
+          ) : (
+            sortedPosts.map(post => <PostCard post={post} tipo={tipo} />)
+          )}
         </div>
       </div>
 

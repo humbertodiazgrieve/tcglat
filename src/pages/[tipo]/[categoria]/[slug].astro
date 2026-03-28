@@ -7,7 +7,11 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   return posts.map(post => ({
-    params: { categoria: post.data.categoria, slug: post.slug },
+    params: { 
+      tipo: post.data.tipo || 'pokemon', 
+      categoria: post.data.categoria, 
+      slug: post.slug 
+    },
     props: { post }
   }));
 }
@@ -80,11 +84,16 @@ const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', {
             </div>
           )}
 
-          <!-- Índice -->
+          <!-- Índice (desplegable) -->
           {headings && headings.length > 0 && (
-            <div class="bg-white rounded-xl border border-gray-200 p-5">
-              <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Índice</h3>
-              <ul class="space-y-2">
+            <details class="bg-white rounded-xl border border-gray-200 p-5">
+              <summary class="text-sm font-semibold text-gray-900 uppercase tracking-wide cursor-pointer flex items-center justify-between list-none">
+                <span>Índice</span>
+                <svg class="w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <ul class="space-y-2 mt-3">
                 {headings.map((heading, i) => (
                   <li style={`padding-left: ${(heading.depth - 1) * 1}rem`}>
                     <a href={`#${heading.slug}`} class="text-sm text-gray-600 hover:text-brand-red transition-colors">
@@ -93,30 +102,7 @@ const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', {
                   </li>
                 ))}
               </ul>
-            </div>
-          )}
-
-          <!-- Categorías -->
-          <div class="bg-white rounded-xl border border-gray-200 p-5">
-            <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Categorías</h3>
-            <div class="flex flex-wrap gap-2">
-              <a href={`/${tipo}/noticias`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Noticias</a>
-              <a href={`/${tipo}/guias`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Guías</a>
-              <a href={`/${tipo}/estrategia`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Estrategia</a>
-              <a href={`/${tipo}/analisis`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Análisis</a>
-            </div>
-          </div>
-
-          <!-- Tags -->
-          {post.data.tags && post.data.tags.length > 0 && (
-            <div class="bg-white rounded-xl border border-gray-200 p-5">
-              <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Tags</h3>
-              <div class="flex flex-wrap gap-2">
-                {post.data.tags.map(tag => (
-                  <span class="text-xs px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 rounded-full">#{tag}</span>
-                ))}
-              </div>
-            </div>
+            </details>
           )}
         </div>
       </aside>
@@ -162,9 +148,36 @@ const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', {
           </article>
         </div>
 
+        <!-- Categorías y Tags al final -->
+        <div class="bg-white rounded-xl border border-gray-200 p-4 md:p-6 mt-6">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+            <!-- Categorías -->
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Categorías</h3>
+              <div class="flex flex-wrap gap-2">
+                <a href={`/${tipo}/noticias`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Noticias</a>
+                <a href={`/${tipo}/guias`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Guías</a>
+                <a href={`/${tipo}/estrategia`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Estrategia</a>
+                <a href={`/${tipo}/analisis`} class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors">Análisis</a>
+              </div>
+            </div>
+            <!-- Tags -->
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div>
+                <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Tags</h3>
+                <div class="flex flex-wrap gap-2">
+                  {post.data.tags.map(tag => (
+                    <span class="text-xs px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 rounded-full">#{tag}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
         <!-- Artículos relacionados -->
         {relatedPosts.length > 0 && (
-          <div class="mt-12 pt-8 border-t border-gray-200">
+          <div class="mt-10 pt-8 border-t border-gray-200">
             <h2 class="text-xl font-bold text-gray-900 mb-6">Artículos relacionados</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
               {relatedPosts.map(related => (

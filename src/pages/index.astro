@@ -65,10 +65,10 @@ const tiposTCG = [
 ];
 
 const categorias = [
-  { href: '/blog/categoria/noticias', label: 'Noticias', icon: '📰' },
-  { href: '/blog/categoria/guias', label: 'Guías', icon: '📖' },
-  { href: '/blog/categoria/estrategia', label: 'Estrategia', icon: '🎯' },
-  { href: '/blog/categoria/analisis', label: 'Análisis', icon: '📊' },
+  { label: 'Noticias', icon: '📰' },
+  { label: 'Guías', icon: '📖' },
+  { label: 'Estrategia', icon: '🎯' },
+  { label: 'Análisis', icon: '📊' },
 ];
 ---
 
@@ -121,16 +121,17 @@ const categorias = [
 
     <!-- Categorías Generales -->
     <div class="border-t border-gray-200 pt-10">
-      <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">O explora por categoría</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">Explora por tipo de TCG</h2>
+      <p class="text-center text-gray-600 mb-6">Primero elige tu juego favorito arriba, luego navega por categorías.</p>
       <div class="flex flex-wrap justify-center gap-3">
         {categorias.map(cat => (
-          <a 
-            href={cat.label} 
-            class="flex items-center gap-2 px-5 py-3 bg-white border border-gray-200 rounded-xl text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
+          <span 
+            class="flex items-center gap-2 px-5 py-3 bg-gray-100 border border-gray-200 rounded-xl text-gray-400 cursor-not-allowed"
+            title="Selecciona un TCG primero"
           >
             <span>{cat.icon}</span>
             <span class="font-medium">{cat.label}</span>
-          </a>
+          </span>
         ))}
       </div>
     </div>
