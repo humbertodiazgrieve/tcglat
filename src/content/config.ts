@@ -12,7 +12,10 @@ const posts = defineCollection({
     autor: z.string().default('tcglat'),
     tags: z.array(z.string()).optional(),
     destacado: z.boolean().default(false),
-    insights: z.array(z.string()).optional()
+    insights: z.array(z.string()).optional(),
+    video: z.string().optional(),
+    deckCode: z.string().optional(),
+    galeria: z.array(z.string()).optional()
   })
 });
 
