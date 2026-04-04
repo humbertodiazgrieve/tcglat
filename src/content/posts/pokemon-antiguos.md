@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/pokemon-antiguos.svg
 autor: tcglat
 tags: ["primera generacion", "kanto", "clasicos"]
+insights:
+  - "Los 151 Pokémon de Kanto fueron creados por Satoshi Tajiri inspirado en su pasión por insectos"
+  - "Charizard, Blastoise y Pikachu se convirtieron en iconos globales de la franquicia"
+  - "Mewtwo y Mew siguen siendo legendarios icónicos con historias memorables en el anime"
+  - "Las cartas TCG de primera edición pueden alcanzar valores de miles de dólares"
+  - "Pokémon Rojo Fuego y Verde Hoja permitieron a nuevas generaciones experimentar Kanto"
 ---
 
 La primera generación de Pokémon marcó el nacimiento de una franquicia que se convertiría en un fenómeno cultural global. Lanzada originalmente en 1996 para Game Boy, estos 151 Pokémon han dejado una huella indeleble en la historia de los videojuegos y el entretenimiento. En esta guía completa, exploraremos por qué los Pokémon de la primera generación siguen siendo los más valorados por coleccionistas y fans de todo el mundo.

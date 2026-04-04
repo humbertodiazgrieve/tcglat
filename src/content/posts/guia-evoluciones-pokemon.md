@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/pokemon-evoluciones.svg
 autor: tcglat
 tags: ["evoluciones pokemon", "como evolucionar", "cadenas evolucion"]
+insights:
+  - "Los métodos principales de evolución son: por nivel, por piedra específica, por intercambio, y por amistad"
+  - "En el TCG, las evoluciones funcionan por etapas: Básico → Etapa 1 → Etapa 2, con requisitos específicos"
+  - "Algunas evoluciones son únicas por generación, como los Pokémon de tipo Hada introducidos en la 6ª generación"
+  - "La evolución es permanente: un Pokémon una vez evolucionado no puede volver a su forma anterior"
+  - "Ciertos Pokémon requieren condiciones especiales como aprender movimientos específicos o alcanzar felicidad máxima"
 ---
 
 Las evoluciones Pokémon son uno de los pilares fundamentales de la franquicia. Desde los primeros juegos hasta las entregas más recientes, la evolución sigue siendo el mecanismo central que define el crecimiento de tus compañeros de viaje. En esta guía te explicamos todo lo que necesitas saber sobre las evoluciones Pokémon.
@@ -46,7 +52,7 @@ Algunas evoluciones requieren condiciones únicas, como evolucionar en momentos 
 La región original nos trajo algunas de las evoluciones más icónicas:
 
 - **Bulbasaur → Ivysaur → Venusaur** (nivel 16/32)
-- **Charmander → Chareleon → Charizard** (nivel 16/36)
+- **Charmander → Charmeleon → Charizard** (nivel 16/36)
 - **Squirtle → Wartortle → Blastoise** (nivel 16/36)
 - **Pidgey → Pidgeotto → Pidgeot** (nivel 18/36)
 - **Rattata → Raticate** (nivel 20)
@@ -59,7 +65,7 @@ La región original nos trajo algunas de las evoluciones más icónicas:
 - **Clefairy → Clefable** (piedra Luna)
 - **Vulpix → Ninetales** (piedra Fuego)
 - **Jigglypuff → Wigglytuff** (piedra Luna)
-- **Zubat → Golbat** (nivel 22)
+
 - **Oddish → Gloom → Vileplume/Bellossom** (nivel 21/piedra Hoja)
 - **Paras → Parasect** (nivel 24)
 - **Venonat → Venomoth** (nivel 31)
@@ -128,7 +134,7 @@ La región de Johto añadió muchas evoluciones para Pokémon de primera generac
 - **Hoothoot → Noctowl** (nivel 20)
 - **Ledyba → Ledian** (nivel 18)
 - **Spinarak → Ariados** (nivel 22)
-- **Crobat** (no evoluciona - requiere evolución alternativa)
+- **Zubat → Golbat → Crobat** (nivel 22/23)
 - **Chinchou → Lanturn** (nivel 27)
 - **Pichu → Pikachu → Raichu** (amistad/piedra Trueno)
 - **Cleffa → Clefairy → Clefable** (amistad/piedra Luna)

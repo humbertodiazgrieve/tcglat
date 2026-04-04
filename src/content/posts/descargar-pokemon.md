@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/historia-juegos-pokemon.svg
 autor: tcglat
 tags: ["historia pokemon", "juegos pokemon", "evolucion"]
+insights:
+  - "Pokémon Rojo y Verde iniciaron la franquicia en 1996 con 151 criaturas en Game Boy"
+  - "Cada generación añadió nuevos tipos: Oscuro y Acero en Gen 2, Hada en Gen 6"
+  - "La transición a 3D ocurrió en Gen 6 con X e Y en Nintendo 3DS"
+  - "Gen 9 con Escarlata y Púrpura introdujo el mundo abierto desde el inicio"
+  - "Los remakes modernos permiten transferir Pokémon a través de más de 25 años de historia"
 ---
 
 La saga de los juegos de Pokémon representa una de las trayectorias más extraordinarias en la historia de los videojuegos. Desde su aparición en 1996 en Japón, los juegos de Pokémon han evolucionado de manera sorprendente, transformando una idea simple de capturar y entrenar criaturas virtuales en una experiencia de entretenimiento que ha cautivado a millones de jugadores alrededor del mundo. Esta historia de más de dos décadas refleja no solo avances tecnológicos, sino también la capacidad de Nintendo y Game Freak para reinventarse constantemente mientras mantienen la esencia que hizo popular a la franquicia desde sus inicios.

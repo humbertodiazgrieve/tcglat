@@ -1,13 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
-  <rect width="200" height="150" fill="#E8F4F8"/>
-  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FFD43B" stroke="#F59F00" stroke-width="3"/>
-  <rect x="35" y="35" width="40" height="55" rx="5" fill="#FF6B6B" stroke="#C92A2A" stroke-width="2"/>
-  <rect x="80" y="35" width="40" height="55" rx="5" fill="#74C0FC" stroke="#339AF0" stroke-width="2"/>
-  <rect x="125" y="35" width="40" height="55" rx="5" fill="#69DB7C" stroke="#40C057" stroke-width="2"/>
-  <circle cx="55" cy="60" r="12" fill="#FFE066"/>
-  <circle cx="100" cy="60" r="12" fill="#FFE066"/>
-  <circle cx="145" cy="60" r="12" fill="#FFE066"/>
-  <path d="M70 110 L90 130 L130 90" fill="none" stroke="#495057" stroke-width="5" stroke-linecap="round"/>
-  <rect x="80" y="100" width="40" height="30" rx="3" fill="#868E96"/>
-  <circle cx="100" cy="115" r="8" fill="#CED4DA"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a1d6a" />
+      <stop offset="100%" style="stop-color:#6b21a8" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <rect x="510" y="180" width="180" height="30" rx="15" fill="#ef4444"/>
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">COMPRAS</text>
+  
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="white" text-anchor="middle">Dónde Comprar</text>
+  <text x="600" y="340" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="#fbbf24" text-anchor="middle">Cartas Pokémon</text>
+  
+  <text x="600" y="400" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.7)" text-anchor="middle">Las mejores tiendas y recomendaciones</text>
+  
+  <rect x="450" y="430" width="300" height="2" fill="#fbbf24" rx="1"/>
+  
+  <rect x="1090" y="585" width="90" height="24" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="1135" y="602" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">TCGlat</text>
 </svg>

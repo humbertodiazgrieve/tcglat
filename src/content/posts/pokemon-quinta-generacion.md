@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/pokemon-quinta-generacion.svg
 autor: tcglat
 tags: ["quinta generacion", "unova", "negro blanco"]
+insights:
+  - La quinta generación introdujo 156 Pokémon nuevos, el número más grande en un solo juego hasta ahora.
+  - Los legendarios Reshiram, Zekrom y Kyurem representan verdad, ideal y congelación respectivamente.
+  - Unova está inspirada en la ciudad de Nueva York, combinando ambientes urbanos modernos con naturaleza.
+  - Emboar es el único inicial de tipo fuego y lucha en toda la franquicia.
+  - Haxorus ha dominado el competitivo durante años por su combinación de alto ataque y habilidad Evaluador.
 ---
 
 La quinta generación de Pokémon marcó un punto de inflexión significativo en la historia de la franquicia. Con el lanzamiento de Pokémon Negro y Blanco para Nintendo DS, Game Freak introdujo no solo una nueva región para explorar, sino también el mayor número de Pokémon nuevos en la historia de la serie: 156 criaturas completamente nuevas. Esta generación representó una renovación completa del fórmula de Pokémon, manteniendo la esencia de la saga mientras introducía innov conceptos que redefinieron lo que un juego de Pokémon podía ser.

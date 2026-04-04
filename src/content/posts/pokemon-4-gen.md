@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/pokemon-4-gen.svg
 autor: tcglat
 tags: ["cuarta generacion", "sinnoh", "diamante perla"]
+insights:
+  - "Sinnoh está basada en Hokkaido, Japón, con clima frío y geografía diversa"
+  - "Dialga, Palkia y Giratina forman el trío legendario representando tiempo, espacio y antimundo"
+  - "Pokémon Platino corrigió críticas de los originales con ritmo de juego más rápido"
+  - "Lucario, Garchomp y Togekiss se convirtieron en favoritos competitivos de esta gen"
+  - "Los remakes Diamante Brillante y Perla Brillante llegaron a Switch en 2021"
 ---
 
 La cuarta generación de Pokémon representa una de las eras más innovadoras en la historia de la franchise. Lanzada para Nintendo DS entre 2006 y 2008, esta generación introdujo 107 nuevos Pokémon, una nueva región llamada Sinnoh, y numerosas mecánicas que siguen siendo fundamentales en los juegos actuales. En esta guía exhaustiva, exploraremos todo lo que necesitas saber sobre Pokémon Diamante, Perla y Platino, así como los Pokémon más icónicos de esta generación.

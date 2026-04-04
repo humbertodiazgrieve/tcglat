@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/pokemon-tipo-tierra.svg
 autor: tcglat
 tags: ["tipo tierra", "pokemon tierra", "competitivo"]
+insights:
+  - "El tipo tierra tiene inmunidad total a los ataques eléctricos, siendo el counter definitivo para equipos basados en electricidad"
+  - "Garchomp, Rhyperior, Excadrill y Groudon son los mejores tierra en competitivo por su combinación de estadísticas y tipos secundarios"
+  - "Los tierra son efectivos contra tipos fuego, acero, roca y bicho, ofreciendo amplia cobertura ofensivamente"
+  - "La debilidad al tipo planta es la principal vulnerabilidad del tierra, seguido por hielo y agua"
+  - "Groudon con su habilidad Desenrollar puede cambiar el clima a sol extremo, potenciando ataques de tipo fuego aliados"
 ---
 
 El tipo tierra representa uno de los tipos más fundamentales y estratégicamente importantes en el universo Pokémon. Desde su introducción en la primera generación, los Pokémon de tipo tierra han sido considerados como fuerzas naturales imperturbables, capaces de mover montañas y shake el terreno stesso. Esta percepción se traduce directamente en mecánicas de juego que reflejan el poder brute y la resistencia característica de estos seres de la tierra.

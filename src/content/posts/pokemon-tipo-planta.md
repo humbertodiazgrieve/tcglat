@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/pokemon-tipo-planta.svg
 autor: tcglat
 tags: ["tipo planta", "pokemon planta", "competitivo"]
+insights:
+  - Los Pokémon planta tienen ventaja triple contra tipos agua, tierra y roca, haciéndolos ideales contra equipos comunes.
+  - Rillaboom y Sceptile son actualmente los Pokémon planta más dominantes en competitivo por su velocidad y poder.
+  - La habilidad Clorofila potencia el ataque especial bajo sol, sinergizando con equipos de clima soleado.
+  - Las debilidades principales del tipo planta son fuego, hielo, veneno, volador y bicho.
+  - Venusaur funciona excelentemente como Pokémon de soporte gracias a su doble tipo planta y veneno.
 ---
 
 El tipo Planta representa uno de los tipos más icónicos y estratégicamente importantes en el universo Pokémon. Desde los primeros juegos hasta las competencias más actuales, los Pokémon de tipo planta han demostrado ser fundamentales en cualquier equipo bien estructurado. Su combinación única de fortalezas defensivas y capacidades ofensivas los convierte en opciones versátiles para diferentes estilos de juego.

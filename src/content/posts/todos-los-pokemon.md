@@ -8,6 +8,12 @@ imagen: /images/todos-los-pokemon.svg
 autor: tcglat
 tags: ["pokedex", "todos los pokemon", "generaciones pokemon", "lista pokemon"]
 destacado: true
+insights:
+  - "Actualmente existen 1025 Pokémon en la Pokédex Nacional, desde los 151 originales de Kanto hasta los 120 de Paldea"
+  - "La franquicia tiene 9 generaciones: Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, Galar y Paldea"
+  - "Completar la Pokédex Nacional requiere capturar Pokémon de todas las regiones, ya que cada juego solo contiene los de su región"
+  - "Las formas alternativas, variantes regionales y formas de Gigantamax no cuentan como Pokémon únicos en la Pokédex"
+  - "Cada generación introduce aproximadamente 100-150 Pokémon nuevos, con Unova siendo la más prolífica (156)"
 ---
 
 # Todos los Pokémon: La Guía Completa de la Pokédex Nacional

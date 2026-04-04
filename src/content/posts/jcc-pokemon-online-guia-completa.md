@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/jcc-pokemon-online.svg
 autor: tcglat
 tags: ["jcc pokemon", "pokemon tcg", "juego de cartas", "como jugar pokemon"]
+insights:
+  - "El JCC Pokémon tiene tres tipos de cartas: Pokémon (Básicos, Etapa 1, Etapa 2), Energía y Entrenador"
+  - "El objetivo es derrotar al oponente reduciendo sus Puntos de Vida a cero usando ataques estratégicos"
+  - "Puedes jugar Pokémon TCG online en Pokémon TCGO (gratuito) y en plataformas como Tabletop Simulator"
+  - "El sistema de evolución permite transformar Pokémon Básicos en versiones más poderosas durante la partida"
+  - "El tipo de energía requerido para los ataques determina qué cartas de Energía debes incluir en tu mazo"
 ---
 
 El Juego de Cartas Coleccionables Pokémon, conocido internacionalmente como Pokémon Trading Card Game o simplemente JCC Pokémon, es uno de los juegos de cartas más populares y longevos del mundo. Desde su lanzamiento en 1996 en Japón, este juego ha capturado la imaginación de millones de jugadores alrededor del planeta, convirtiendo la coleccionación y el estratégico uso de cartas en una experiencia única que combina nostalgia, competencia y comunidad. Si alguna vez te has preguntado qué es el JCC Pokémon, cómo se juega, o dónde puedes jugar Pokémon TCG online, esta guía completa te proporcionará toda la información que necesitas para comenzar tu aventura en el mundo de las cartas Pokémon.

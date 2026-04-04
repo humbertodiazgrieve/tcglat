@@ -7,6 +7,12 @@ fecha: 2026-04-04
 imagen: /images/como-jugar-pokemon.svg
 autor: tcglat
 tags: ["como jugar pokemon", "reglas pokemon", "guia principiantes"]
+insights:
+  - "El sistema de tipos tiene 18 elementos con relaciones de ventaja/desventaja (fuego > planta > agua > fuego)"
+  - "El objetivo principal es convertirse en Campeón derrotando a los líderes de gimnasio y el Elite Four"
+  - "Las evoluciones aumentan estadísticas y pueden cambiar el tipo del Pokémon, siendo permanentes"
+  - "Los PvP y competencias usan estrategias avanzadas con ventajas de tipo, habilidades y objetos"
+  - "Existen más de 1000 especies de Pokémon divididas en 9 generaciones, cada una con estadísticas únicas"
 ---
 
 # Cómo Jugar a Pokémon: Guía Completa para Principiantes

@@ -1,10 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
-  <rect width="200" height="150" fill="#E8F4F8"/>
-  <rect x="25" y="25" width="150" height="100" rx="8" fill="#F8F9FA" stroke="#ADB5BD" stroke-width="3"/>
-  <path d="M70 50 L100 35 L130 50 L130 90 L100 115 L70 90 Z" fill="#9775FA" opacity="0.8"/>
-  <path d="M100 35 L130 50 L130 90 L100 115 L70 90 L70 50 Z" fill="none" stroke="#845EF7" stroke-width="2"/>
-  <path d="M85 55 L100 45 L115 55 L115 85 L100 100 L85 85 Z" fill="#B197FC" opacity="0.6"/>
-  <polygon points="45,120 55,105 65,120" fill="#20C997"/>
-  <polygon points="135,105 145,90 155,105" fill="#20C997"/>
-  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">4TA GEN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5B2C6F"/>
+      <stop offset="50%" style="stop-color:#7D3C98"/>
+      <stop offset="100%" style="stop-color:#9B59B6"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4D03F"/>
+      <stop offset="100%" style="stop-color:#F7DC6F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="20" fill="none" stroke="#F4D03F" stroke-width="3" opacity="0.6"/>
+  <text x="600" y="320" text-anchor="middle" font-family="Arial Black, Arial" font-size="72" font-weight="bold" fill="url(#glow)" filter="drop-shadow(3px 3px 6px rgba(0,0,0,0.4))">Pokémon 4ta Generación</text>
+  <text x="600" y="580" text-anchor="middle" font-family="Arial" font-size="28" fill="#F4D03F">tcglat.com</text>
 </svg>
