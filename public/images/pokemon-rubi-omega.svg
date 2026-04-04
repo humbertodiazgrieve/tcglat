@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#FFF5F5"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FF6B6B" stroke="#E03131" stroke-width="3"/>
+  <polygon points="100,35 130,75 115,115 85,115 70,75" fill="#E03131"/>
+  <polygon points="100,45 120,75 110,105 90,105 80,75" fill="#FF6B6B"/>
+  <polygon points="105,55 115,70 108,85 95,80 95,65" fill="#FFC9C9" opacity="0.6"/>
+  <circle cx="60" cy="55" r="12" fill="#FFE066" opacity="0.7"/>
+  <circle cx="140" cy="65" r="10" fill="#74C0FC" opacity="0.7"/>
+  <circle cx="55" cy="105" r="8" fill="#69DB7C" opacity="0.7"/>
+  <circle cx="145" cy="110" r="8" fill="#9775FA" opacity="0.7"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">RUBY OMEGA</text>
+</svg>

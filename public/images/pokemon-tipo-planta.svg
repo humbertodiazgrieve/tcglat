@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F5E9"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#51CF66" stroke="#2F9E44" stroke-width="3"/>
+  <path d="M60 100 Q60 60 100 50 Q140 60 140 100 Q140 120 100 130 Q60 120 60 100 Z" fill="#2F9E44"/>
+  <path d="M70 90 Q70 65 100 60 Q130 65 130 90 Q130 105 100 110 Q70 105 70 90 Z" fill="#69DB7C"/>
+  <path d="M85 40 L95 55 L85 55 Z" fill="#40C057"/>
+  <path d="M115 40 L125 55 L115 55 Z" fill="#40C057"/>
+  <path d="M100 35 L108 48 L100 48 Z" fill="#40C057"/>
+  <circle cx="65" cy="95" r="8" fill="#74C0FC" opacity="0.6"/>
+  <circle cx="135" cy="90" r="6" fill="#FFE066" opacity="0.6"/>
+  <circle cx="75" cy="115" r="5" fill="#FF6B6B" opacity="0.6"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">PLANTA</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F4F8"/>
+  <rect x="25" y="25" width="150" height="100" rx="8" fill="#F8F9FA" stroke="#868E96" stroke-width="2"/>
+  <path d="M45 75 L55 55 L75 45 L100 40 L125 45 L145 55 L155 75 L145 95 L125 105 L100 110 L75 105 L55 95 Z" fill="#FFE066" stroke="#FAB005" stroke-width="2"/>
+  <path d="M65 80 L80 60 L100 50 L120 60 L135 80 L120 100 L100 110 L80 100 Z" fill="none" stroke="#82C91E" stroke-width="2"/>
+  <circle cx="70" cy="70" r="8" fill="#FF6B6B"/>
+  <circle cx="130" cy="70" r="8" fill="#74C0FC"/>
+  <circle cx="100" cy="90" r="6" fill="#69DB7C"/>
+  <text x="100" y="148" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#212529">KANTO</text>
+</svg>

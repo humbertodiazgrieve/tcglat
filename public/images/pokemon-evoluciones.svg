@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F4F8"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FF6B6B" stroke="#C92A2A" stroke-width="3"/>
+  <circle cx="65" cy="75" r="25" fill="#FFE066" stroke="#F59F00" stroke-width="3"/>
+  <circle cx="100" cy="75" r="25" fill="#69DB7C" stroke="#40C057" stroke-width="3"/>
+  <circle cx="135" cy="75" r="25" fill="#74C0FC" stroke="#339AF0" stroke-width="3"/>
+  <path d="M85 70 L105 80" stroke="#495057" stroke-width="3" stroke-linecap="round"/>
+  <path d="M110 70 L130 80" stroke="#495057" stroke-width="3" stroke-linecap="round"/>
+  <path d="M85 80 L105 70" stroke="#495057" stroke-width="3" stroke-linecap="round"/>
+  <path d="M110 80 L130 70" stroke="#495057" stroke-width="3" stroke-linecap="round"/>
+  <text x="100" y="125" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">EVOLUTION</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#FFF5F5"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FF6B6B" stroke="#E03131" stroke-width="3"/>
+  <path d="M100 35 Q80 60 80 85 Q80 110 100 115 Q120 110 120 85 Q120 60 100 35 Z" fill="#FF6B6B"/>
+  <path d="M100 45 Q85 65 85 85 Q85 100 100 105 Q115 100 115 85 Q115 65 100 45 Z" fill="#FF8787"/>
+  <path d="M90 55 L85 45 L95 45 Z" fill="#FA5252"/>
+  <path d="M110 55 L115 45 L105 45 Z" fill="#FA5252"/>
+  <path d="M100 50 L100 40" stroke="#FA5252" stroke-width="3"/>
+  <circle cx="65" cy="60" r="10" fill="#FFE066" opacity="0.7"/>
+  <circle cx="135" cy="55" r="12" fill="#74C0FC" opacity="0.7"/>
+  <circle cx="70" cy="110" r="8" fill="#69DB7C" opacity="0.7"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">FUEGO</text>
+</svg>

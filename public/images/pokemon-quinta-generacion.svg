@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#FFF3E0"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FF922B" stroke="#E8590C" stroke-width="3"/>
+  <circle cx="85" cy="75" r="35" fill="#FF922B"/>
+  <text x="85" y="85" text-anchor="middle" font-family="Arial" font-size="40" font-weight="bold" fill="#FFF">5</text>
+  <circle cx="115" cy="65" r="20" fill="#FFE066" opacity="0.8"/>
+  <circle cx="70" cy="105" r="15" fill="#69DB7C" opacity="0.7"/>
+  <circle cx="130" cy="105" r="12" fill="#74C0FC" opacity="0.7"/>
+  <circle cx="145" cy="55" r="8" fill="#FF6B6B" opacity="0.7"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">5ª GENERACIÓN</text>
+</svg>

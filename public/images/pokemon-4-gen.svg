@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F4F8"/>
+  <rect x="25" y="25" width="150" height="100" rx="8" fill="#F8F9FA" stroke="#ADB5BD" stroke-width="3"/>
+  <path d="M70 50 L100 35 L130 50 L130 90 L100 115 L70 90 Z" fill="#9775FA" opacity="0.8"/>
+  <path d="M100 35 L130 50 L130 90 L100 115 L70 90 L70 50 Z" fill="none" stroke="#845EF7" stroke-width="2"/>
+  <path d="M85 55 L100 45 L115 55 L115 85 L100 100 L85 85 Z" fill="#B197FC" opacity="0.6"/>
+  <polygon points="45,120 55,105 65,120" fill="#20C997"/>
+  <polygon points="135,105 145,90 155,105" fill="#20C997"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">4TA GEN</text>
+</svg>

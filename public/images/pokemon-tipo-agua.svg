@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F4F8"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#74C0FC" stroke="#339AF0" stroke-width="3"/>
+  <path d="M100 30 Q60 80 60 100 Q60 130 100 130 Q140 130 140 100 Q140 80 100 30 Z" fill="#339AF0"/>
+  <path d="M100 40 Q70 80 70 95 Q70 115 100 115 Q130 115 130 95 Q130 80 100 40 Z" fill="#A5D8FF"/>
+  <ellipse cx="85" cy="95" rx="10" ry="15" fill="#E7F5FF" opacity="0.7"/>
+  <circle cx="70" cy="70" r="20" fill="#FF6B6B" opacity="0.8"/>
+  <circle cx="130" cy="75" r="15" fill="#69DB7C" opacity="0.8"/>
+  <circle cx="80" cy="115" r="12" fill="#FFE066" opacity="0.8"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">AGUA</text>
+</svg>

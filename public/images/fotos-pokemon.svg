@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#F8F9FA"/>
+  <rect x="25" y="20" width="150" height="110" rx="8" fill="#343A40" stroke="#212529" stroke-width="3"/>
+  <rect x="35" y="30" width="90" height="70" rx="3" fill="#495057"/>
+  <circle cx="80" cy="65" r="20" fill="#ADB5BD"/>
+  <circle cx="80" cy="65" r="15" fill="#212529"/>
+  <circle cx="80" cy="65" r="8" fill="#495057"/>
+  <circle cx="110" cy="95" r="8" fill="#FF6B6B"/>
+  <circle cx="130" cy="85" r="6" fill="#69DB7C"/>
+  <circle cx="55" cy="90" r="7" fill="#74C0FC"/>
+  <path d="M140 35 L150 25 L160 35 L150 45 Z" fill="#868E96"/>
+  <text x="100" y="148" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#212529">FOTOS POKEMON</text>
+</svg>

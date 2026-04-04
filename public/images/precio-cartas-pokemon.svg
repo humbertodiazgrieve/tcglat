@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F4F8"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FFE066" stroke="#F59F00" stroke-width="3"/>
+  <path d="M60 40 L100 40 L100 90 L60 90 Z" fill="#FF6B6B" stroke="#C92A2A" stroke-width="2"/>
+  <rect x="65" y="45" width="30" height="25" rx="3" fill="#FFFFFF"/>
+  <circle cx="80" cy="57" r="5" fill="#212529"/>
+  <rect x="65" y="75" width="30" height="10" rx="2" fill="#868E16"/>
+  <circle cx="100" cy="90" r="15" fill="#868E16"/>
+  <circle cx="100" cy="90" r="10" fill="#495057"/>
+  <circle cx="97" cy="87" r="3" fill="#FFFFFF"/>
+  <text x="100" y="135" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">PRECIO</text>
+</svg>

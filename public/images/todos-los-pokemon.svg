@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#E8F4F8"/>
+  <rect x="30" y="30" width="140" height="100" rx="15" fill="#FF6B6B" stroke="#C92A2A" stroke-width="3"/>
+  <circle cx="70" cy="75" r="25" fill="#FFE066" stroke="#F59F00" stroke-width="3"/>
+  <circle cx="100" cy="75" r="25" fill="#69DB7C" stroke="#40C057" stroke-width="3"/>
+  <circle cx="130" cy="75" r="25" fill="#74C0FC" stroke="#339AF0" stroke-width="3"/>
+  <rect x="85" y="115" width="30" height="20" rx="3" fill="#495057"/>
+  <text x="100" y="100" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#212529">POKÉDEX</text>
+</svg>

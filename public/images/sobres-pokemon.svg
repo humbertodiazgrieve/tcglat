@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150">
+  <rect width="200" height="150" fill="#FFF9DB"/>
+  <rect x="25" y="25" width="150" height="110" rx="10" fill="#FFE066" stroke="#F08C00" stroke-width="3"/>
+  <rect x="55" y="40" width="90" height="80" rx="5" fill="#F08C00"/>
+  <rect x="60" y="45" width="80" height="70" rx="3" fill="#FFE066"/>
+  <rect x="65" y="55" width="70" height="8" rx="2" fill="#74C0FC"/>
+  <rect x="65" y="67" width="70" height="8" rx="2" fill="#69DB7C"/>
+  <rect x="65" y="79" width="70" height="8" rx="2" fill="#FF6B6B"/>
+  <rect x="65" y="91" width="70" height="8" rx="2" fill="#9775FA"/>
+  <circle cx="50" cy="55" r="8" fill="#4DABF7" opacity="0.7"/>
+  <circle cx="150" cy="50" r="8" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="55" cy="105" r="6" fill="#69DB7C" opacity="0.7"/>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#212529">SOBRES</text>
+</svg>
