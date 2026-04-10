@@ -13,6 +13,7 @@ insights:
   - "4 de las 7 expansiones son Universes Beyond (colaboraciones)"
   - "Marvel Super Heroes llega el 26 de junio con héroes icónicos"
   - "Star Trek celebra su 60 aniversario con un set en noviembre"
+  - "La poll de Mark Rosewater muestra que el 50.1% de jugadores prefieren Lorwyn Eclipsado"
 ---
 
 2026 será, sin exagerar, **el año más ambicioso en la historia de Magic: The Gathering**. Wizards of the Coast ha confirmado un total de **7 expansiones** para este año, una singularidad en la programación que no se repetirá en el futuro cercano.
@@ -25,8 +26,8 @@ De esas 7 expansiones, **4 son Universes Beyond** (colaboraciones con franquicia
 
 | # | Expansión | Tipo | Fecha de lanzamiento |
 |---|-----------|------|---------------------|
-| 1 | Lorwyn Eclipsado | Universes Within | 23 de enero de 2026 |
-| 2 | Teenage Mutant Ninja Turtles | Universes Beyond | 6 de marzo de 2026 |
+| 1 | Lorwyn Eclipsado | Universes Within | 16 de enero de 2026 |
+| 2 | Teenage Mutant Ninja Turtles | Universes Beyond | 27 de febrero de 2026 |
 | 3 | Secretos de Strixhaven | Universes Within | 24 de abril de 2026 |
 | 4 | Marvel Super Heroes | Universes Beyond | 26 de junio de 2026 |
 | 5 | The Hobbit | Universes Beyond | 14 de agosto de 2026 |
@@ -38,7 +39,7 @@ De esas 7 expansiones, **4 son Universes Beyond** (colaboraciones con franquicia
 ## 1. Lorwyn Eclipsado – Enero 2026 ✅ Ya disponible
 
 **Tipo**: Universes Within  
-**Fecha**: 23 de enero de 2026  
+**Fecha**: 16 de enero de 2026  
 **Estado**: Ya lanzado
 
 Magic abre el año regresando a uno de los planos más queridos por la comunidad: **Lorwyn**. Han pasado casi 19 años desde la primera visita, y los fans han pedido este regreso durante mucho tiempo.
@@ -60,7 +61,7 @@ Si eres un jugador veterano que extrañaba la estética y mecánicas de Lorwyn, 
 ## 2. Teenage Mutant Ninja Turtles – Marzo 2026 ✅ Ya disponible
 
 **Tipo**: Universes Beyond  
-**Fecha**: 6 de marzo de 2026  
+**Fecha**: 27 de febrero de 2026  
 **Estado**: Ya lanzado
 
 **¡Cowabunga, planeswalker!** Los Turtles invaden el Multiverso en una colaboración que nadie esperaba pero que muchos disfrutan.
@@ -196,6 +197,28 @@ Esta proporción ha generado debate en la comunidad. Mientras algunos jugadores 
 
 **Lo que está claro**: Wizards of the Coast ve potencial en los Universes Beyond, especialmente después del éxito de **Final Fantasy** en 2025.
 
+## Lo que la comunidad dice: La poll de Mark Rosewater
+
+Mark Rosewater (director de diseño de Magic) realizó una poll en su blog preguntando a los jugadores cuál set de 2026 estaban más emocionados. Los resultados fueron claraso:
+
+| Set | percentage | Posición |
+|-----|------------|----------|
+| Lorwyn Eclipsado | 50.1% | 🥇 DOMINANTE |
+| Reality Fracture | 15.4% | 🥈 |
+| Secretos de Strixhaven | 10.8% | 🥉 |
+| Marvel Super Heroes | 9.4% | 4º |
+| Star Trek | 5.6% | 5º |
+| The Hobbit | 3.4% | 6º |
+| Teenage Mutant Ninja Turtles | 2% | 7º (último) |
+
+**Lo que esto nos dice**:
+- **Lorwyn Eclipsado dominae** con más del 50% de los votos - un margen histórico jamais visto
+- Los jugadores claramente prefieren el universo original de Magic
+- **TMNT quedaron último** a pesar de tener spoilers, probablement por el "Universes Beyond fatigue" y su tono más ligero comparado a otras franquicias
+- La comunidad valora la nostalgia y los sets narrativos (Reality Fracture ocupa el segundo lugar malgré tener apenas información)
+
+Esta poll confirma lo que molti jugadores han expresado: hay cansancio avec la cantidad de colaboraciones externas, y Lorwyn Eclipsado representa el regreso esperado al Magic original que molti extrañaban.
+
 ---
 
 ## Nuevos productos en 2026
@@ -222,8 +245,8 @@ Depende de lo que busques:
 
 | Si te gusta... | Tu set ideal |
 |----------------|--------------|
-| El lore original de Magic | Reality Fracture |
 | La nostalgia de Lorwyn | Lorwyn Eclipsado |
+| El lore original de Magic | Reality Fracture |
 | Los superhéroes | Marvel Super Heroes |
 | Tolkien y la Tierra Media | The Hobbit |
 | La ciencia ficción | Star Trek |
