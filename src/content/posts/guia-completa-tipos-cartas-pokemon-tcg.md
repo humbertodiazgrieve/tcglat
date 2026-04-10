@@ -25,23 +25,6 @@ En esta guía vamos a desenmarañar todo ese lío. Te explico qué tipos de cart
 
 ---
 
-## Tabla de Contenidos
-
-1. [Cartas por Tipo de Pokémon](#cartas-por-tipo-de-pokémon)
-2. [Cartas de Energía](#cartas-de-energía)
-3. [Cartas de Entrenador](#cartas-de-entrenador)
-4. [Cartas EX, GX, V y VMAX](#cartas-ex-gx-v-y-vmax)
-5. [Cartas ex (Espada y Escudo+)](#cartas-ex-espada-y-escudo)
-6. [Cartas TERA y Terestial](#cartas-tera-y-terestial)
-7. [Cartas Full Art y Rainbow Rare](#cartas-full-art-y-rainbow-rare)
-8. [Cartas Secretas y Reverse Holo](#cartas-secretas-y-reverse-holo)
-9. [Cartas Legend y V-Unión](#cartas-legend-y-v-unión)
-10. [Cartas Especiales](#cartas-especiales)
-11. [Cartas Promocionales](#cartas-promocionales)
-12. [Guía de Valores por Rareza](#guía-de-valores-por-rareza)
-
----
-
 ## Cartas por Tipo de Pokémon
 
 Vamos a lo básico, que sin estos peques no hay juego. Las cartas de Pokémon son el corazón del TCG y se dividen en tres etapas de evolución:
