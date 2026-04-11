@@ -64,12 +64,6 @@ const tiposTCG = [
   },
 ];
 
-const categorias = [
-  { label: 'Noticias', icon: '📰' },
-  { label: 'Guías', icon: '📖' },
-  { label: 'Estrategia', icon: '🎯' },
-  { label: 'Análisis', icon: '📊' },
-];
 ---
 
 <BaseLayout title=" tcglat - Tu portal de TCG en Español" description=" tcglat.com - El mejor contenido sobre Trading Card Games: Pokémon, Yu-Gi-Oh!, Magic, Lorcana y One Piece.">
@@ -119,20 +113,72 @@ const categorias = [
       ))}
     </div>
 
-    <!-- Categorías Generales -->
-    <div class="border-t border-gray-200 pt-10">
-      <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">Explora por tipo de TCG</h2>
-      <p class="text-center text-gray-600 mb-6">Primero elige tu juego favorito arriba, luego navega por categorías.</p>
-      <div class="flex flex-wrap justify-center gap-3">
-        {categorias.map(cat => (
-          <span 
-            class="flex items-center gap-2 px-5 py-3 bg-gray-100 border border-gray-200 rounded-xl text-gray-400 cursor-not-allowed"
-            title="Selecciona un TCG primero"
-          >
-            <span>{cat.icon}</span>
-            <span class="font-medium">{cat.label}</span>
-          </span>
-        ))}
+    <!-- Preguntas Frecuentes sobre TCG -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
+        Preguntas Frecuentes sobre TCG
+      </h2>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">¿Qué es un TCG (Trading Card Game)?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Un TCG o juego de cartas colecionables es un juego de estrategia donde los jugadores construyen mazos con cartas que compran o intercambian. Cada carta representa criaturas, magia u otros elementos, y el objetivo es vencer al oponente reduciéndole puntos de vida o cumpliendo otras condiciones de victoria.
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">¿Cuáles son los juegos de TCG más populares?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Los TCG más importantes del mundo son: <strong>Pokémon TCG</strong> (el más vendido históricamente), <strong>Magic: The Gathering</strong> (creado en 1993 y considerado el precursor de todos los TCG), <strong>Yu-Gi-Oh!</strong> (fenómeno mundial especialmente en Asia y América), <strong>Disney Lorcana</strong> (el TCG más nuevo con mayor crecimiento) y <strong>One Piece Card Game</strong> (basado en el anime más popular de Japón).
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">¿Invertir en cartas de TCG es seguro?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Invertir en TCG puede ser rentable, pero conlleva riesgos. Algunas cartas raras han appreciated significativamente (como cartas de Pokémon de primera edición o Black Lotus de Magic), pero el mercado es volátil y muchas cartas pierden valor con el tiempo. Es importante investigar, conocer las tendencias del metajuego y tratar la inversión como un complemento, no como una fuente principal de ingresos.
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">¿Cuál es la mejor forma de empezar en los TCG?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Lo mejor es elegir un juego que te apasione y empezar con un mazo de inicio (Theme Deck). Dedica tiempo a aprender las reglas básicas, juega con amigos o en tournaments locales, y gradually ve expandiendo tu colección. No es necesario gastar mucho al principio; la práctica y la estrategia son más importantes que las cartas más caras.
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">¿Las cartas de TCG funcionan en tournaments oficiales?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Sí, pero cada TCG tiene sus propios formatos y restricciones. Los formats más comunes son <strong>Standard</strong> (solo expansiones recientes) y <strong>Expanded</strong> (más histórico). Cada juego tiene organizaciones oficiales: Play! Pokémon para Pokémon, competitive REL para Magic, y sistemas similares para Yu-Gi-Oh! y Lorcana. Para jogar en tournaments, las cartas deben estar en condiciones aptas para juego (sin daño que afecte el mazo del oponente).
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">¿Cuál TCG debería elegir: Pokémon, Magic, Yu-Gi-Oh!, Lorcana u One Piece?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Depende de tus preferencias: <strong>Pokémon</strong> es ideal para principiantes y coleccionistas casuales. <strong>Magic</strong> ofrece la mayor profundidad estratégica y variedad de formatos. <strong>Yu-Gi-Oh!</strong> es perfecto para quienes buscan acción rápida y combos espectaculares. <strong>Lorcana</strong> combina la magia de Disney con mecánica moderna. <strong>One Piece</strong> es ideal para fans del anime. ¡Todos tienen comunidades activas en Latinoamérica!
+          </div>
+        </details>
       </div>
     </div>
   </main>
