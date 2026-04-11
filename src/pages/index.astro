@@ -64,6 +64,10 @@ const tiposTCG = [
   },
 ];
 
+const recentPosts = posts
+  .sort((a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime())
+  .slice(0, 6);
+
 ---
 
 <BaseLayout title=" tcglat - Tu portal de TCG en Español" description=" tcglat.com - El mejor contenido sobre Trading Card Games: Pokémon, Yu-Gi-Oh!, Magic, Lorcana y One Piece.">
@@ -73,10 +77,10 @@ const tiposTCG = [
     <!-- Hero Section -->
     <div class="text-center mb-12">
       <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        ¿Cuál es tu <span class="text-brand-red">TCG</span> favorito?
+        Bienvenido a <span class="text-brand-red">tcglat</span>
       </h1>
       <p class="text-gray-600 max-w-2xl mx-auto">
-        Explora contenido exclusivo, guías, estrategias y noticias sobre los mejores juegos de cartas colecionables.
+        Somos una página informativa sobre trading card games.
       </p>
     </div>
 
@@ -111,6 +115,49 @@ const tiposTCG = [
           </div>
         </a>
       ))}
+    </div>
+
+    <!-- Artículos Recientes -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
+        Artículos Recientes
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recentPosts.map(post => (
+          <a 
+            href={`/${post.data.tipo}/${post.data.categoria}/${post.slug}`}
+            class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all"
+          >
+            {post.data.imagen && (
+              <div class="aspect-video bg-gray-100 overflow-hidden">
+                <img 
+                  src={post.data.imagen} 
+                  alt={post.data.titulo}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            )}
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded">
+                  {post.data.tipo.toUpperCase()}
+                </span>
+                <span class="text-xs text-gray-400">
+                  {new Date(post.data.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
+                </span>
+              </div>
+              <h3 class="font-semibold text-gray-800 group-hover:text-brand-red transition-colors line-clamp-2">
+                {post.data.titulo}
+              </h3>
+              {post.data.descripcion && (
+                <p class="text-sm text-gray-500 mt-2 line-clamp-2">
+                  {post.data.descripcion}
+                </p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
 
     <!-- Preguntas Frecuentes sobre TCG -->
