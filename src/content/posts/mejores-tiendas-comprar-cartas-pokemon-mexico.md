@@ -1,5 +1,5 @@
 ---
-titulo: "Las Mejores Tiendas para Comprar Cartas Pokémon en México (2025)"
+titulo: "Las Mejores Tiendas para Comprar Cartas Pokémon en México"
 descripcion: " Guía completa de las mejores tiendas físicas y online para comprar cartas Pokémon originales en México. Encuentra sobres, cajas, singles y accesorios."
 tipo: pokemon
 categoria: guias
