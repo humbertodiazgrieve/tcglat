@@ -1,0 +1,49 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tcglat.com/sitemap.xml
+
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: *
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /search
+Disallow: /tag/
