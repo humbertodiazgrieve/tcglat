@@ -32,6 +32,51 @@ const posts = allPosts
   .sort((a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime());
 
 const categorias = ['noticias', 'guias', 'estrategia', 'analisis'];
+
+const textosSEO: Record<string, string> = {
+  pokemon: `Pokémon TCG es el juego de cartas coleccionables más icónico del mundo. Desde su lanzamiento en 1996, ha logrado reunir a millones de jugadores y coleccionistas en todos los continentes, convirtiéndose en una de las franquicias más queridas de la historia. En tcglat encontrarás contenido completo para aprovechar al máximo esta experiencia: guías para principiantes, análisis de cartas y rarezas, estrategias de metajuego, noticias de expansiones y consejos para comprar, organizar y proteger tu colección. Pokémon no solo es nostalgia: es un juego competitivo vivo, con torneos oficiales, eventos de prelanzamiento y una comunidad en constante crecimiento en Latinoamérica y España.`,
+  yugioh: `Yu-Gi-Oh! es uno de los juegos de cartas coleccionables más emocionantes y competitivos del mundo. Basado en la popular franquicia de manga y anime, este TCG destaca por su ritmo rápido, combos espectaculares y una cantidad enorme de arquetipos disponibles. En tcglat cubrimos todo lo que necesitas saber para jugar Yu-Gi-Oh!: desde las reglas básicas y tipos de invocación hasta análisis del metajuego, estrategias de mazos y noticias sobre banlists y expansiones. Ya seas un duelista principiante o un jugador competitivo, aquí encontrarás contenido práctico en español para mejorar tus partidas.`,
+  magic: `Magic: The Gathering es el precursor de todos los juegos de cartas coleccionables y sigue siendo referencia obligada tres décadas después de su creación. Su profundidad estratégica, variedad de formatos y universo de lore lo convierten en el TCG favorito de millones de jugadores. En tcglat encontrarás guías para empezar, análisis de formatos como Standard, Commander y Draft, noticias de nuevas expansiones y consejos para construir mazos competitivos. También cubrimos el lado coleccionista de Magic, con artículos sobre cartas valiosas, productos especiales y tendencias del mercado secundario.`,
+  lorcana: `Disney Lorcana es el juego de cartas coleccionables más exitoso de los últimos años. Con una mezcla única de magia Disney y mecánicas modernas, ha conquistado a jugadores y coleccionistas de todo el mundo. En tcglat te ayudamos a descubrir todo sobre Lorcana: cómo jugar, reglas básicas, tipos de cartas, construcción de mazos y estrategias por colores. También cubrimos noticias de nuevos sets, eventos oficiales y el atractivo coleccionista de las ilustraciones de personajes icónicos. Si buscas empezar en Lorcana o mejorar tu nivel, este es tu espacio en español.`,
+  onepiece: `One Piece Card Game lleva la aventura del anime más popular de Japón al formato de juegos de cartas coleccionables. Con mecánicas dinámicas, líderes basados en personajes icónicos y un sistema de dones que acelera la acción, este TCG ha ganado una comunidad enorme en poco tiempo. En tcglat encontrarás guías para aprender a jugar, análisis de colores y líderes, estrategias de metajuego y noticias sobre expansiones y eventos. Ya seas fan de One Piece o simplemente busques un TCG divertido y competitivo, aquí tienes contenido pensado para hispanohablantes.`
+};
+
+const textoSEO = textosSEO[tipo] || `Descubre todo sobre ${info.nombre} en tcglat. Contenido en español sobre juegos de cartas coleccionables para jugadores y coleccionistas de Latinoamérica.`;
+
+const faqsPorTipo: Record<string, { pregunta: string; respuesta: string }[]> = {
+  pokemon: [
+    { pregunta: '¿Qué es Pokémon TCG?', respuesta: 'Pokémon TCG es el juego de cartas coleccionables oficial de Pokémon. Los jugadores construyen mazos con cartas de Pokémon, Entrenador y Energía para competir en partidas donde el objetivo es quedarse con las seis cartas de premio del rival o cumplir condiciones especiales.' },
+    { pregunta: '¿Cómo empezar a jugar Pokémon TCG?', respuesta: 'La mejor forma de empezar es con un mazo de inicio o Theme Deck, que incluye todo lo necesario para jugar. También puedes aprender las reglas básicas en nuestras guías para principiantes y practicar con amigos o en eventos locales.' },
+    { pregunta: '¿Dónde comprar cartas de Pokémon TCG?', respuesta: 'Puedes comprar cartas en tiendas especializadas, grandes cadenas y tiendas online. En tcglat tenemos guías de compra para México, Perú, España y otros países de Latinoamérica, con recomendaciones de tiendas confiables.' },
+    { pregunta: '¿Las cartas de Pokémon pueden aumentar de valor?', respuesta: 'Sí, algunas cartas raras, promocionales o de ediciones antiguas pueden revalorizarse con el tiempo. Sin embargo, no todas las cartas son una inversión segura: el estado, la rareza y la demanda del mercado influyen mucho en su precio.' }
+  ],
+  yugioh: [
+    { pregunta: '¿Qué es Yu-Gi-Oh! TCG?', respuesta: 'Yu-Gi-Oh! TCG es un juego de cartas coleccionables basado en la franquicia de manga y anime. Dos jugadores se enfrentan usando mazos de monstruos, magias y trampas, buscando reducir los puntos de vida del rival a cero o cumplir condiciones de victoria especiales.' },
+    { pregunta: '¿Cuáles son los tipos de invocación en Yu-Gi-Oh!?', respuesta: 'Los tipos de invocación incluyen normal, especial, tributo, fusión, sincro, xyz, péndulo, enlace y ritual. Cada uno requiere condiciones específicas y permite estrategias muy diferentes dentro del juego.' },
+    { pregunta: '¿Cómo se juega el formato competitivo?', respuesta: 'El formato más común es Advanced, con una banlist que limita o prohibe ciertas cartas. Los torneos oficiales siguen las reglas de Konami y se juegan en rondas suizas, seguidas de top cut.' },
+    { pregunta: '¿Dónde puedo comprar cartas de Yu-Gi-Oh!?', respuesta: 'Las cartas de Yu-Gi-Oh! se venden en tiendas especializadas, eventos y plataformas online. Es importante comprar en sitios confiables para evitar cartas falsificadas o dañadas.' }
+  ],
+  magic: [
+    { pregunta: '¿Qué es Magic: The Gathering?', respuesta: 'Magic: The Gathering es el primer juego de cartas coleccionables de la historia. Los jugadores usan mazos de cartas para lanzar hechizos, convocar criaturas y activar artefactos, con el objetivo de reducir la vida del oponente a cero.' },
+    { pregunta: '¿Cuáles son los formatos de Magic?', respuesta: 'Los formatos más populares son Standard, Pioneer, Modern, Legacy, Commander, Draft y Sealed. Cada uno tiene reglas distintas sobre qué cartas están permitidas y cómo se construyen los mazos.' },
+    { pregunta: '¿Cómo empezar a jugar Magic?', respuesta: 'Puedes empezar con un mazo preconstruido, un Planeswalker Deck o participar en un evento de Draft en tu tienda local. Aprender las fases del turno y el sistema de maná es el primer paso fundamental.' },
+    { pregunta: '¿Dónde comprar cartas de Magic?', respuesta: 'Las cartas de Magic se compran en tiendas especializadas, eventos y marketplaces online. Singles son la mejor opción para construir mazos específicos, mientras que sobres y cajas son ideales para draft y colección.' }
+  ],
+  lorcana: [
+    { pregunta: '¿Qué es Disney Lorcana?', respuesta: 'Disney Lorcana es un juego de cartas coleccionables donde personajes de Disney cobran vida como glimmers. Los jugadores usan tinta para jugar personajes, objetos y acciones, buscando obtener lore y alcanzar la victoria.' },
+    { pregunta: '¿Cómo se juega Lorcana?', respuesta: 'Cada jugador usa un mazo de 60 cartas y un personaje como líder. El objetivo es obtener 20 puntos de lore. Las cartas se juegan pagando su coste con tinta, y los personajes pueden cantar, desafiar o explorar.' },
+    { pregunta: '¿Cuáles son los colores de Lorcana?', respuesta: 'Lorcana tiene seis colores: Amber, Amethyst, Emerald, Ruby, Sapphire y Steel. Cada color representa una filosofía y mecánica diferente, permitiendo diversas estrategias de mazo.' },
+    { pregunta: '¿Dónde comprar productos de Lorcana?', respuesta: 'Los productos de Lorcana se venden en tiendas especializadas, grandes cadenas y eventos oficiales. Debido a la alta demanda, algunos productos pueden estar limitados, por lo que conviene estar atento a lanzamientos.' }
+  ],
+  onepiece: [
+    { pregunta: '¿Qué es One Piece Card Game?', respuesta: 'One Piece Card Game es un juego de cartas coleccionables basado en el anime y manga One Piece. Los jugadores usan un líder, cartas de personaje, eventos y escenarios para reducir la vida del oponente o cumplir objetivos.' },
+    { pregunta: '¿Cómo se juega One Piece TCG?', respuesta: 'Cada jugador elige un líder y construye un mazo de 50 cartas. El juego usa dones para aumentar el poder, bloquear ataques y activar habilidades. El objetivo es dejar la vida del rival en cero o agotar su mazo.' },
+    { pregunta: '¿Cuáles son los colores en One Piece TCG?', respuesta: 'One Piece TCG tiene cinco colores: Rojo, Verde, Azul, Púrpura y Negro. Cada color se asocia con diferentes arquetipos, personajes y estilos de juego.' },
+    { pregunta: '¿Dónde comprar cartas de One Piece?', respuesta: 'Las cartas de One Piece TCG se consiguen en tiendas especializadas, eventos oficiales y tiendas online. Recomendamos comprar en distribuidores autorizados para garantizar productos originales.' }
+  ]
+};
+
+const faqs = faqsPorTipo[tipo] || [];
 ---
 
 <BaseLayout title={`${info.nombre} | tcglat.com`} description={`Todo sobre ${info.nombre}: ${info.descripcion}`}>
@@ -45,7 +90,8 @@ const categorias = ['noticias', 'guias', 'estrategia', 'analisis'];
         <span class="text-sm font-medium text-gray-500">{info.nombre}</span>
       </div>
       <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{info.nombre}</h1>
-      <p class="text-gray-600">{info.descripcion}</p>
+      <p class="text-gray-600 mb-4">{info.descripcion}</p>
+      <p class="text-gray-600 leading-relaxed max-w-4xl">{textoSEO}</p>
     </div>
 
     <!-- Quick Links por Categoría -->
@@ -83,6 +129,29 @@ const categorias = ['noticias', 'guias', 'estrategia', 'analisis'];
         </div>
       </div>
     </div>
+    <!-- Preguntas Frecuentes -->
+    {faqs.length > 0 && (
+      <div class="border-t border-gray-200 pt-10 mt-12">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
+            Preguntas frecuentes sobre {info.nombre}
+          </h2>
+          <div class="space-y-4">
+            {faqs.map(faq => (
+              <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+                <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                  <span class="font-semibold text-gray-800">{faq.pregunta}</span>
+                  <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div class="px-5 pb-5 text-gray-600">
+                  {faq.respuesta}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
   </main>
 
   <Footer />

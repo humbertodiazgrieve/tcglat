@@ -68,6 +68,13 @@ const recentPosts = posts
   .sort((a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime())
   .slice(0, 6);
 
+const allPostsSorted = posts
+  .sort((a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime());
+
+const column1 = allPostsSorted.slice(0, 12);
+const column2 = allPostsSorted.slice(12, 24);
+const column3 = allPostsSorted.slice(24, 36);
+
 ---
 
 <BaseLayout title=" tcglat - Tu portal de TCG en Español" description=" tcglat.com - El mejor contenido sobre Trading Card Games: Pokémon, Yu-Gi-Oh!, Magic, Lorcana y One Piece.">
@@ -160,6 +167,74 @@ const recentPosts = posts
       </div>
     </div>
 
+    <!-- Índice completo de artículos -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+        Todos los artículos
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Caja 1: artículos 1-12 -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+            Artículos 1-12
+          </h3>
+          <ul class="space-y-3">
+            {column1.map(post => (
+              <li>
+                <a 
+                  href={`/${post.data.tipo}/${post.data.categoria}/${post.slug}`}
+                  class="group flex items-start gap-2 text-sm text-gray-600 hover:text-brand-red transition-colors"
+                >
+                  <span class="text-brand-red opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
+                  <span class="line-clamp-2">{post.data.titulo}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Caja 2: artículos 13-24 -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+            Artículos 13-24
+          </h3>
+          <ul class="space-y-3">
+            {column2.map(post => (
+              <li>
+                <a 
+                  href={`/${post.data.tipo}/${post.data.categoria}/${post.slug}`}
+                  class="group flex items-start gap-2 text-sm text-gray-600 hover:text-brand-red transition-colors"
+                >
+                  <span class="text-brand-red opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
+                  <span class="line-clamp-2">{post.data.titulo}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Caja 3: artículos 25-36 -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+            Artículos 25-36
+          </h3>
+          <ul class="space-y-3">
+            {column3.map(post => (
+              <li>
+                <a 
+                  href={`/${post.data.tipo}/${post.data.categoria}/${post.slug}`}
+                  class="group flex items-start gap-2 text-sm text-gray-600 hover:text-brand-red transition-colors"
+                >
+                  <span class="text-brand-red opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
+                  <span class="line-clamp-2">{post.data.titulo}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- Contenido SEO -->
     <div class="border-t border-gray-200 pt-10 mt-8">
       <!-- ¿Qué son los TCG? -->
@@ -180,38 +255,8 @@ const recentPosts = posts
         </div>
       </section>
 
-      <!-- TCG más populares -->
-      <section class="mb-14">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-          Los TCG más populares del mundo
-        </h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-center mb-8">
-          El mercado de juegos de cartas coleccionables nunca ha sido tan diverso. Estos son los cinco TCG más relevantes a nivel global y los que encontrarás en tcglat:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {tiposTCG.map(tipo => (
-            <a 
-              href={`/${tipo.id}`}
-              class={`group ${tipo.bgColor} ${tipo.borderColor} border-2 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
-            >
-              <div class="flex items-start gap-4">
-                <span class="text-3xl shrink-0">{tipo.icon}</span>
-                <div>
-                  <h3 class={`text-lg font-bold ${tipo.textColor} mb-1 group-hover:underline decoration-2 underline-offset-2`}>
-                    {tipo.nombre}
-                  </h3>
-                  <p class="text-sm text-gray-600 leading-relaxed">
-                    {tipo.descripcion}
-                  </p>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
       <!-- Por qué tcglat -->
-      <section class="max-w-5xl mx-auto mb-6">
+      <section class="max-w-5xl mx-auto mb-14">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
           ¿Por qué tcglat es el portal de TCG para Latinoamérica?
         </h2>
@@ -242,6 +287,59 @@ const recentPosts = posts
             <p class="text-sm text-gray-600 leading-relaxed">
               Pokémon, Magic, Yu-Gi-Oh!, Disney Lorcana y One Piece Card Game. Todo lo que juegas en un solo lugar.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TCG Pokémon: por qué comprar TCGs hoy -->
+      <section class="max-w-6xl mx-auto mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">
+          TCG Pokémon: ¿por qué comprar <span class="text-brand-red">TCGs</span> hoy?
+        </h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-center mb-8">
+          El mercado de juegos de cartas coleccionables nunca ha estado tan vivo. Si estás pensando en empezar, estos son los motivos que convierten a los TCG en una de las mejores opciones de entretenimiento y coleccionismo actual.
+        </p>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Los <strong>juegos de cartas coleccionables</strong> han experimentado un crecimiento exponencial durante los últimos años. Lo que comenzó como un pasatiempo infantil en los años noventa se ha convertido en un fenómeno global que atrae a millones de personas de todas las edades. <strong>Pokémon TCG</strong> lidera esta revolución, con eventos internacionales, torneos locales y una comunidad apasionada que sigue expandiéndose en Latinoamérica y el resto del mundo.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Comprar TCGs hoy es mucho más que adquirir cartas: es entrar en un ecosistema donde convergen la <strong>estrategia</strong>, el <strong>coleccionismo</strong> y la <strong>inversión</strong>. Puedes montar un mazo competitivo para jugar en tu tienda local, buscar cartas raras para completar tu colección o apostar por piezas que aumenten de valor con el tiempo. Cada sobre abierto, cada intercambio y cada partida aporta una experiencia única que no se compara con otros hobbies.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                El atractivo de los TCG también reside en su <strong>accesibilidad</strong>. No necesitas invertir una fortuna para empezar. Un mazo de inicio, unos cuantos sobres y ganas de aprender son suficientes para comenzar a disfrutar. A medida que ganas experiencia, puedes ir profundizando en el metajuego, descubrir cartas más raras y participar en eventos que te conectan con otros jugadores.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                Además, el mercado secundario de cartas ha demostrado un potencial real. Cartas vintage de Pokémon, ediciones especiales de Magic y promociones limitadas de otros TCG han alcanzado valores considerables. Eso no significa que cada carta sea una inversión segura, pero sí que existe una oportunidad real para quienes estudian el mercado, cuidan el estado de sus cartas y entienden las tendencias del coleccionismo.
+              </p>
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start gap-3 text-gray-600">
+                  <span class="text-brand-red text-xl shrink-0">✓</span>
+                  <span>Comunidad activa en toda Latinoamérica con torneos y eventos oficiales.</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                  <span class="text-brand-red text-xl shrink-0">✓</span>
+                  <span>Contenido constante: expansiones nuevas, mecánicas y formatos que renuevan el juego.</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                  <span class="text-brand-red text-xl shrink-0">✓</span>
+                  <span>Posibilidad de coleccionar por nostalgia, jugar competitivamente o diversificar tu inversión.</span>
+                </li>
+              </ul>
+              <p class="text-gray-600 leading-relaxed">
+                En tcglat queremos ser tu guía en este mundo. Aquí encontrarás análisis de precios, guías de compra, estrategias de metajuego y consejos para que cada carta que compres tenga un propósito claro. Si todavía no sabes por dónde empezar, explora nuestras guías para principiantes y descubre por qué millones de personas ya forman parte del universo TCG.
+              </p>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center">
+              <img
+                src="/images/tipos-cartas-pokemon.svg"
+                alt="Diferentes tipos de cartas Pokémon TCG"
+                class="w-full max-w-md rounded-2xl"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>

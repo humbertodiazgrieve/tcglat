@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const postsSorted = posts.sort((a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime());
+
+const tipos = ['pokemon', 'yugioh', 'magic', 'lorcana', 'onepiece'];
+const categorias = ['noticias', 'guias', 'estrategia', 'analisis'];
+
+const paginasEstaticas = [
+  { url: '/', titulo: 'Inicio' },
+  { url: '/about', titulo: 'Acerca de' },
+  { url: '/contacto', titulo: 'Contacto' },
+  { url: '/privacidad', titulo: 'Privacidad' },
+  { url: '/mapa-de-sitio', titulo: 'Mapa de sitio' }
+];
+
+const nombresTipos: Record<string, string> = {
+  pokemon: 'Pokémon TCG',
+  yugioh: 'Yu-Gi-Oh!',
+  magic: 'Magic: The Gathering',
+  lorcana: 'Disney Lorcana',
+  onepiece: 'One Piece Card Game'
+};
+
+const nombresCategorias: Record<string, string> = {
+  noticias: 'Noticias',
+  guias: 'Guías',
+  estrategia: 'Estrategia',
+  analisis: 'Análisis'
+};
+
+const postsByTipo = tipos.map(tipo => ({
+  tipo,
+  nombre: nombresTipos[tipo],
+  posts: postsSorted.filter(p => p.data.tipo === tipo)
+}));
+---
+
+<BaseLayout 
+  title="Mapa de sitio | tcglat" 
+  description="Mapa de sitio de tcglat. Explora todas las páginas, categorías y artículos sobre TCG en español."
+>
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14">
+    <div class="max-w-3xl mx-auto text-center mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Mapa de <span class="text-brand-red">sitio</span>
+      </h1>
+      <p class="text-gray-600">
+        Navega por todas las secciones y artículos de tcglat. Encuentra fácilmente contenido sobre Pokémon, Magic, Yu-Gi-Oh!, Lorcana y One Piece.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Páginas principales -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+          Páginas principales
+        </h2>
+        <ul class="space-y-3">
+          {paginasEstaticas.map(pagina => (
+            <li>
+              <a 
+                href={pagina.url} 
+                class="text-sm text-gray-600 hover:text-brand-red transition-colors"
+              >
+                {pagina.titulo}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- TCGs -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+          TCGs
+        </h2>
+        <ul class="space-y-3">
+          {tipos.map(tipo => (
+            <li>
+              <a 
+                href={`/${tipo}`} 
+                class="text-sm text-gray-600 hover:text-brand-red transition-colors capitalize"
+              >
+                {nombresTipos[tipo]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Categorías -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+          Categorías por TCG
+        </h2>
+        <ul class="space-y-2">
+          {tipos.map(tipo => (
+            <>
+              <li class="pt-2">
+                <span class="text-sm font-semibold text-gray-800">{nombresTipos[tipo]}</span>
+              </li>
+              {categorias.map(categoria => (
+                <li class="pl-3">
+                  <a 
+                    href={`/${tipo}/${categoria}`} 
+                    class="text-sm text-gray-500 hover:text-brand-red transition-colors"
+                  >
+                    {nombresCategorias[categoria]}
+                  </a>
+                </li>
+              ))}
+            </>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Artículos por TCG -->
+      {postsByTipo.map(({ tipo, nombre, posts }) => (
+        posts.length > 0 && (
+          <div class="bg-white border border-gray-200 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+              {nombre}
+            </h2>
+            <ul class="space-y-3">
+              {posts.map(post => (
+                <li>
+                  <a 
+                    href={`/${post.data.tipo}/${post.data.categoria}/${post.slug}`}
+                    class="text-sm text-gray-600 hover:text-brand-red transition-colors line-clamp-2"
+                  >
+                    {post.data.titulo}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
