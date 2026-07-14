@@ -160,6 +160,93 @@ const recentPosts = posts
       </div>
     </div>
 
+    <!-- Contenido SEO -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <!-- ¿Qué son los TCG? -->
+      <section class="max-w-4xl mx-auto mb-14">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5 text-center">
+          ¿Qué son los <span class="text-brand-red">TCG</span>?
+        </h2>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Los <strong>TCG</strong> (Trading Card Games) o <strong>juegos de cartas coleccionables</strong> son juegos de estrategia en los que los jugadores construyen mazos personalizados con cartas que representan personajes, criaturas, hechizos, habilidades y recursos. Cada partida es una combinación de planificación, táctica y un poco de suerte, donde el objetivo es vencer al oponente reduciendo sus puntos de vida, cumpliendo condiciones especiales o agotando sus recursos.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            El atractivo de los TCG va más allá del juego competitivo. También existe un fuerte componente de <strong>coleccionismo</strong>: cartas raras, promocionales, ediciones limitadas y versiones alternativas pueden alcanzar valores significativos en el mercado secundario. Abrir sobres, intercambiar cartas y completar colecciones forma parte de la experiencia que millones de personas disfrutan en todo el mundo.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            En tcglat cubrimos todo el universo de los TCG: desde las reglas básicas para principiantes hasta análisis avanzados, estrategias de metajuego y consejos de inversión en cartas. Nuestro objetivo es que entiendas, disfrutes y domines tus juegos de cartas favoritos.
+          </p>
+        </div>
+      </section>
+
+      <!-- TCG más populares -->
+      <section class="mb-14">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+          Los TCG más populares del mundo
+        </h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-center mb-8">
+          El mercado de juegos de cartas coleccionables nunca ha sido tan diverso. Estos son los cinco TCG más relevantes a nivel global y los que encontrarás en tcglat:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {tiposTCG.map(tipo => (
+            <a 
+              href={`/${tipo.id}`}
+              class={`group ${tipo.bgColor} ${tipo.borderColor} border-2 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+            >
+              <div class="flex items-start gap-4">
+                <span class="text-3xl shrink-0">{tipo.icon}</span>
+                <div>
+                  <h3 class={`text-lg font-bold ${tipo.textColor} mb-1 group-hover:underline decoration-2 underline-offset-2`}>
+                    {tipo.nombre}
+                  </h3>
+                  <p class="text-sm text-gray-600 leading-relaxed">
+                    {tipo.descripcion}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Por qué tcglat -->
+      <section class="max-w-5xl mx-auto mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+          ¿Por qué tcglat es el portal de TCG para Latinoamérica?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-brand-blue/10 rounded-xl flex items-center justify-center text-2xl">
+              🌎
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Contenido en español</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Guías, noticias y análisis pensados para hispanohablantes de Latinoamérica y España. Sin barreras de idioma.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-brand-red/10 rounded-xl flex items-center justify-center text-2xl">
+              📚
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Guías y estrategia</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Desde mazos competitivos y metajuego hasta consejos para coleccionistas y compradores. Contenido práctico y actualizado.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-brand-blue/10 rounded-xl flex items-center justify-center text-2xl">
+              🎴
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Cobertura de los mejores TCG</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Pokémon, Magic, Yu-Gi-Oh!, Disney Lorcana y One Piece Card Game. Todo lo que juegas en un solo lugar.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <!-- Preguntas Frecuentes sobre TCG -->
     <div class="border-t border-gray-200 pt-10 mt-8">
       <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
