@@ -32,9 +32,11 @@ const typesInfo = {
 const info = typesInfo[type] || typesInfo.pokemon;
 
 const allPosts = await getCollection('postsEn');
-const relatedPosts = allPosts
-  .filter(p => p.data.type === type && p.data.category === post.data.category && p.slug !== post.slug)
-  .slice(0, 3);
+const sameTypeAndCategory = allPosts.filter(p => p.data.type === type && p.data.category === post.data.category && p.slug !== post.slug);
+const sameType = allPosts.filter(p => p.data.type === type && p.data.category !== post.data.category && p.slug !== post.slug);
+const others = allPosts.filter(p => p.data.type !== type && p.slug !== post.slug);
+
+const relatedPosts = [...sameTypeAndCategory, ...sameType, ...others].slice(0, 3);
 
 const date = new Date(post.data.date).toLocaleDateString('en-US', {
   day: 'numeric',

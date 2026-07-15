@@ -32,9 +32,11 @@ const tiposInfo = {
 const info = tiposInfo[tipo] || tiposInfo.pokemon;
 
 const allPosts = await getCollection('posts');
-const relatedPosts = allPosts
-  .filter(p => p.data.tipo === tipo && p.data.categoria === post.data.categoria && p.slug !== post.slug)
-  .slice(0, 3);
+const sameTypeAndCategory = allPosts.filter(p => p.data.tipo === tipo && p.data.categoria === post.data.categoria && p.slug !== post.slug);
+const sameType = allPosts.filter(p => p.data.tipo === tipo && p.data.categoria !== post.data.categoria && p.slug !== post.slug);
+const others = allPosts.filter(p => p.data.tipo !== tipo && p.slug !== post.slug);
+
+const relatedPosts = [...sameTypeAndCategory, ...sameType, ...others].slice(0, 3);
 
 const fecha = new Date(post.data.fecha).toLocaleDateString('es-ES', { 
   day: 'numeric', 
