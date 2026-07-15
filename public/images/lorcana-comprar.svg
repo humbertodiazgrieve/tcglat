@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Dónde comprar Disney Lorcana">
+  <defs>
+    <linearGradient id="bg-lorcana-buy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a044e" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-lorcana-buy)" />
+
+  <g transform="translate(400, 190)" text-anchor="middle">
+    <rect x="-110" y="-80" width="220" height="140" rx="12" fill="#10b981" />
+    <rect x="-90" y="-60" width="180" height="100" rx="8" fill="#ffffff" />
+    <text x="0" y="-10" font-family="serif" font-size="40" font-weight="bold" fill="#701a75" text-anchor="middle">LOR</text>
+  </g>
+
+  <text x="400" y="330" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#fae8ff" text-anchor="middle">
+    Dónde Comprar Disney Lorcana
+  </text>
+  <text x="400" y="365" font-family="system-ui, sans-serif" font-size="16" fill="#e9d5ff" text-anchor="middle">
+    Productos, sobres y tiendas | tcglat.com
+  </text>
+
+  <rect x="0" y="0" width="800" height="6" fill="#d946ef" />
+  <rect x="0" y="444" width="800" height="6" fill="#d946ef" />
+</svg>

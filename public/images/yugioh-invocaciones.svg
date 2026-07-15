@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Tipos de invocación en Yu-Gi-Oh!">
+  <defs>
+    <linearGradient id="bg-ygo-inv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#4c1d95" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-ygo-inv)" />
+
+  <g transform="translate(400, 190)" text-anchor="middle">
+    <circle cx="-140" cy="0" r="40" fill="#ec4899" />
+    <text x="-140" y="10" font-family="serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Fusión</text>
+
+    <circle cx="-50" cy="-70" r="40" fill="#ffffff" />
+    <text x="-50" y="-60" font-family="serif" font-size="24" font-weight="bold" fill="#1e1b4b" text-anchor="middle">Sincro</text>
+
+    <circle cx="50" cy="-70" r="40" fill="#000000" />
+    <text x="50" y="-60" font-family="serif" font-size="24" font-weight="bold" fill="#fbbf24" text-anchor="middle">Xyz</text>
+
+    <circle cx="140" cy="0" r="40" fill="#06b6d4" />
+    <text x="140" y="10" font-family="serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Enlace</text>
+
+    <circle cx="0" cy="80" r="40" fill="#22c55e" />
+    <text x="0" y="90" font-family="serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Ritual</text>
+  </g>
+
+  <text x="400" y="330" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#f9fafb" text-anchor="middle">
+    Tipos de Invocación en Yu-Gi-Oh!
+  </text>
+  <text x="400" y="365" font-family="system-ui, sans-serif" font-size="16" fill="#a5b4fc" text-anchor="middle">
+    Sincro, Xyz, Fusión y más | tcglat.com
+  </text>
+
+  <rect x="0" y="0" width="800" height="6" fill="#a855f7" />
+  <rect x="0" y="444" width="800" height="6" fill="#a855f7" />
+</svg>

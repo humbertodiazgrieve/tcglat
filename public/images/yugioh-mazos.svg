@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Mejores mazos de Yu-Gi-Oh!">
+  <defs>
+    <linearGradient id="bg-ygo-deck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#581c87" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-ygo-deck)" />
+
+  <g transform="translate(400, 190)" text-anchor="middle">
+    <rect x="-100" y="-70" width="70" height="100" rx="6" fill="#7c3aed" stroke="#a855f7" stroke-width="3" />
+    <rect x="-20" y="-80" width="70" height="100" rx="6" fill="#7c3aed" stroke="#a855f7" stroke-width="3" />
+    <rect x="60" y="-70" width="70" height="100" rx="6" fill="#7c3aed" stroke="#a855f7" stroke-width="3" />
+    <text x="5" y="-25" font-family="serif" font-size="32" font-weight="bold" fill="#fbbf24" text-anchor="middle">YGO</text>
+  </g>
+
+  <text x="400" y="330" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#f9fafb" text-anchor="middle">
+    Mejores Mazos de Yu-Gi-Oh! 2025
+  </text>
+  <text x="400" y="365" font-family="system-ui, sans-serif" font-size="16" fill="#a5b4fc" text-anchor="middle">
+    Meta y decks competitivos | tcglat.com
+  </text>
+
+  <rect x="0" y="0" width="800" height="6" fill="#a855f7" />
+  <rect x="0" y="444" width="800" height="6" fill="#a855f7" />
+</svg>
