@@ -1,0 +1,46 @@
+# llm.txt for tcglat.com
+# This file provides a structured overview of tcglat.com for AI systems and crawlers.
+
+Site: tcglat.com
+Description: tcglat.com is a bilingual content platform (Spanish and English) dedicated to Trading Card Games (TCGs). It publishes strategy guides, news, analysis, buying guides, and beginner-friendly content for the most popular trading card games.
+
+Languages:
+- Spanish (es): https://tcglat.com/
+- English (en): https://tcglat.com/en
+
+Main TCGs covered:
+- Pokémon TCG
+- Yu-Gi-Oh! TCG
+- Magic: The Gathering
+- Disney Lorcana
+- One Piece Card Game
+
+Content categories:
+- News / Noticias — latest updates, announcements, and expansions
+- Guides / Guías — beginner guides, how-to articles, and buying advice
+- Strategy / Estrategia — competitive strategy, deck building, and metagame analysis
+- Analysis / Análisis — deep dives, card history, market value, and franchise features
+
+URL structure:
+- Spanish home: https://tcglat.com
+- English home: https://tcglat.com/en
+- TCG landing pages: https://tcglat.com/{tcg} and https://tcglat.com/en/{tcg}
+- Category pages: https://tcglat.com/{tcg}/{category} and https://tcglat.com/en/{tcg}/{category}
+- Article pages: https://tcglat.com/{tcg}/{category}/{slug} and https://tcglat.com/en/{tcg}/{category}/{slug}
+
+Static pages:
+- About: https://tcglat.com/about and https://tcglat.com/en/about
+- Contact: https://tcglat.com/contacto and https://tcglat.com/en/contact
+- Privacy: https://tcglat.com/privacidad and https://tcglat.com/en/privacy
+- Site map: https://tcglat.com/mapa-de-sitio and https://tcglat.com/en/sitemap
+
+Content policy:
+- All content is informational and educational.
+- Articles may contain product recommendations, affiliate links, and references to official card names.
+- Card names, franchise names, and images are trademarks of their respective owners.
+- tcglat.com is not affiliated with the publishers of the TCGs covered.
+
+For crawlers:
+- Sitemap: https://tcglat.com/sitemap.xml
+- Robots: https://tcglat.com/robots.txt
+- Canonical URLs do not use trailing slashes.
