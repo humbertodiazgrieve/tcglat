@@ -3,7 +3,7 @@ const currentYear = new Date().getFullYear();
 const { pathname } = Astro.url;
 const isEnglish = pathname.startsWith('/en/') || pathname === '/en';
 
-const homeLink = isEnglish ? '/en/' : '/';
+const homeLink = isEnglish ? '/en' : '/';
 const footerTexts = isEnglish ? {
   description: 'Your source in English for Trading Card Games. Strategies, news and guides for all players.',
   tcgs: 'TCGs',

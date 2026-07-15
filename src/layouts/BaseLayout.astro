@@ -7,6 +7,7 @@ interface Props {
 const { title, description } = Astro.props;
 const isEnglish = Astro.url.pathname.startsWith('/en/') || Astro.url.pathname === '/en' || Astro.url.pathname === '/en/';
 const lang = isEnglish ? 'en' : 'es';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/+$/, '');
 ---
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ const lang = isEnglish ? 'en' : 'es';
   <meta name="google-site-verification" content="H0Cy3pUM1HFKyYkkBIpDwC59tJ-rCgk07rtKjX6BPZg" />
   <meta name="author" content="tcglat">
   <meta name="generator" content="Astro">
-  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href}>
+  <link rel="canonical" href={canonicalUrl}>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

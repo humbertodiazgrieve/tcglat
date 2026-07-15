@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Redirect URLs with trailing slash to the version without trailing slash,
+# while preserving existing directory requests (e.g., folder indexes).
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
