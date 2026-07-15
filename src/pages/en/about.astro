@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="About" description="About tcglat.com">
+  <Header />
+
+  <main class="max-w-2xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">About tcglat.com</h1>
+
+    <div class="prose prose-lg">
+      <p class="text-muted mb-4">
+        tcglat.com is the ultimate destination for Trading Card Games content in English and Spanish.
+        We share news, guides, strategies, and analysis for players around the world.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-8 mb-4">Our mission</h2>
+      <p class="text-muted mb-4">
+        To make the world of TCGs accessible to players everywhere, providing quality content
+        for every experience level.
+      </p>
+
+      <h2 class="text-xl font-semibold mt-8 mb-4">TCGs we cover</h2>
+      <ul class="list-disc pl-6 text-muted space-y-2">
+        <li>Pokémon TCG</li>
+        <li>Magic: The Gathering</li>
+        <li>Yu-Gi-Oh!</li>
+        <li>One Piece Card Game</li>
+        <li>Digimon Card Game</li>
+        <li>Disney Lorcana</li>
+        <li>Star Wars: Unlimited</li>
+        <li>Flesh and Blood</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold mt-8 mb-4">Contact</h2>
+      <p class="text-muted">
+        Have suggestions or want to collaborate? Write us at contacto@tcglat.com
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

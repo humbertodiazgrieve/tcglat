@@ -1,0 +1,419 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('postsEn');
+
+const tcgTypes = [
+  {
+    id: 'pokemon',
+    name: 'Pokémon TCG',
+    description: 'The most iconic trading card game in the world. Catch, train and battle.',
+    color: 'from-yellow-400 to-yellow-600',
+    bgColor: 'bg-yellow-50',
+    borderColor: 'border-yellow-200',
+    textColor: 'text-yellow-700',
+    icon: '⚡',
+    postsCount: posts.filter(p => p.data.type === 'pokemon').length
+  },
+  {
+    id: 'yugioh',
+    name: 'Yu-Gi-Oh!',
+    description: 'The definitive collectible card game. The duels never end.',
+    color: 'from-purple-600 to-purple-800',
+    bgColor: 'bg-purple-50',
+    borderColor: 'border-purple-200',
+    textColor: 'text-purple-700',
+    icon: '👑',
+    postsCount: posts.filter(p => p.data.type === 'yugioh').length
+  },
+  {
+    id: 'magic',
+    name: 'Magic: The Gathering',
+    description: 'The precursor of all TCGs. Magic, strategy and an infinite multiverse.',
+    color: 'from-gray-600 to-gray-800',
+    bgColor: 'bg-gray-50',
+    borderColor: 'border-gray-200',
+    textColor: 'text-gray-700',
+    icon: '🪄',
+    postsCount: posts.filter(p => p.data.type === 'magic').length
+  },
+  {
+    id: 'lorcana',
+    name: 'Disney Lorcana',
+    description: 'Where Disney magic meets TCG strategy.',
+    color: 'from-amber-300 to-amber-500',
+    bgColor: 'bg-amber-50',
+    borderColor: 'border-amber-200',
+    textColor: 'text-amber-700',
+    icon: '✨',
+    postsCount: posts.filter(p => p.data.type === 'lorcana').length
+  },
+  {
+    id: 'onepiece',
+    name: 'One Piece Card Game',
+    description: 'Embark on a pirate adventure. You will become the King of Pirates!',
+    color: 'from-red-500 to-red-700',
+    bgColor: 'bg-red-50',
+    borderColor: 'border-red-200',
+    textColor: 'text-red-700',
+    icon: '🏴\u200d☠️',
+    postsCount: posts.filter(p => p.data.type === 'onepiece').length
+  },
+];
+
+const recentPosts = posts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 6);
+
+const allPostsSorted = posts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const column1 = allPostsSorted.slice(0, 12);
+const column2 = allPostsSorted.slice(12, 24);
+const column3 = allPostsSorted.slice(24, 36);
+
+---
+
+<BaseLayout title="tcglat - Your TCG Portal in English" description="tcglat.com - The best content about Trading Card Games: Pokémon, Yu-Gi-Oh!, Magic, Lorcana and One Piece.">
+  <Header />
+
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Welcome to <span class="text-brand-red">tcglat</span>
+      </h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        We are an informational website about trading card games.
+      </p>
+    </div>
+
+    <!-- TCG Selector -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-12">
+      {tcgTypes.map(tcg => (
+        <a
+          href={`/en/${tcg.id}`}
+          class={`group relative overflow-hidden ${tcg.bgColor} ${tcg.borderColor} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
+        >
+          <div class={`absolute inset-0 bg-gradient-to-br ${tcg.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
+
+          <div class="relative">
+            <span class="text-4xl mb-4 block">{tcg.icon}</span>
+            <h2 class={`text-xl font-bold ${tcg.textColor} mb-2`}>
+              {tcg.name}
+            </h2>
+            <p class="text-sm text-gray-600 mb-4">
+              {tcg.description}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class={`text-xs font-medium ${tcg.textColor} bg-white/60 px-3 py-1 rounded-full`}>
+                {tcg.postsCount} article{tcg.postsCount !== 1 ? 's' : ''}
+              </span>
+              <span class="text-sm font-medium text-gray-500 group-hover:text-brand-red transition-colors flex items-center gap-1">
+                View content
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Recent Articles -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
+        Recent Articles
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recentPosts.map(post => (
+          <a
+            href={`/en/${post.data.type}/${post.data.category}/${post.slug}`}
+            class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all"
+          >
+            {post.data.image && (
+              <div class="aspect-video bg-gray-100 overflow-hidden">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            )}
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded">
+                  {post.data.type.toUpperCase()}
+                </span>
+                <span class="text-xs text-gray-400">
+                  {new Date(post.data.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
+                </span>
+              </div>
+              <h3 class="font-semibold text-gray-800 group-hover:text-brand-red transition-colors line-clamp-2">
+                {post.data.title}
+              </h3>
+              {post.data.description && (
+                <p class="text-sm text-gray-500 mt-2 line-clamp-2">
+                  {post.data.description}
+                </p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Full article index -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+        All Articles
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Box 1: articles 1-12 -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+            Articles 1-12
+          </h3>
+          <ul class="space-y-3">
+            {column1.map(post => (
+              <li>
+                <a
+                  href={`/en/${post.data.type}/${post.data.category}/${post.slug}`}
+                  class="group flex items-start gap-2 text-sm text-gray-600 hover:text-brand-red transition-colors"
+                >
+                  <span class="text-brand-red opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
+                  <span class="line-clamp-2">{post.data.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Box 2: articles 13-24 -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+            Articles 13-24
+          </h3>
+          <ul class="space-y-3">
+            {column2.map(post => (
+              <li>
+                <a
+                  href={`/en/${post.data.type}/${post.data.category}/${post.slug}`}
+                  class="group flex items-start gap-2 text-sm text-gray-600 hover:text-brand-red transition-colors"
+                >
+                  <span class="text-brand-red opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
+                  <span class="line-clamp-2">{post.data.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Box 3: articles 25-36 -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+            Articles 25-36
+          </h3>
+          <ul class="space-y-3">
+            {column3.map(post => (
+              <li>
+                <a
+                  href={`/en/${post.data.type}/${post.data.category}/${post.slug}`}
+                  class="group flex items-start gap-2 text-sm text-gray-600 hover:text-brand-red transition-colors"
+                >
+                  <span class="text-brand-red opacity-0 group-hover:opacity-100 transition-opacity shrink-0">→</span>
+                  <span class="line-clamp-2">{post.data.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <!-- What are TCGs? -->
+      <section class="max-w-4xl mx-auto mb-14">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5 text-center">
+          What are <span class="text-brand-red">TCGs</span>?
+        </h2>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <p class="text-gray-600 leading-relaxed mb-4">
+            <strong>TCGs</strong> (Trading Card Games) or <strong>collectible card games</strong> are strategy games where players build custom decks with cards representing characters, creatures, spells, abilities and resources. Each match is a combination of planning, tactics and a little luck, with the goal of defeating the opponent by reducing their life points, meeting special conditions or exhausting their resources.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            The appeal of TCGs goes beyond competitive play. There is also a strong <strong>collecting</strong> component: rare, promotional, limited edition and alternate versions can reach significant values in the secondary market. Opening packs, trading cards and completing collections is part of the experience that millions of people enjoy around the world.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            At tcglat we cover the entire TCG universe: from basic rules for beginners to advanced analysis, metagame strategies and card investment tips. Our goal is for you to understand, enjoy and master your favorite card games.
+          </p>
+        </div>
+      </section>
+
+      <!-- Why tcglat -->
+      <section class="max-w-5xl mx-auto mb-14">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+          Why is tcglat the TCG portal for Latin America?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-brand-blue/10 rounded-xl flex items-center justify-center text-2xl">
+              🌎
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Spanish Content</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Guides, news and analysis for Spanish speakers in Latin America and Spain. No language barriers.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-brand-red/10 rounded-xl flex items-center justify-center text-2xl">
+              📚
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Guides & Strategy</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              From competitive decks and metagame to tips for collectors and buyers. Practical and updated content.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 mx-auto mb-4 bg-brand-blue/10 rounded-xl flex items-center justify-center text-2xl">
+              🎴
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Coverage of the Best TCGs</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Pokémon, Magic, Yu-Gi-Oh!, Disney Lorcana and One Piece Card Game. Everything you play in one place.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pokémon TCG: why buy TCGs today -->
+      <section class="max-w-6xl mx-auto mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">
+          Pokémon TCG: Why Buy <span class="text-brand-red">TCGs</span> Today?
+        </h2>
+        <p class="text-gray-600 max-w-3xl mx-auto text-center mb-8">
+          The trading card game market has never been more alive. Whether you want to play, collect or invest, there has never been a better time to start.
+        </p>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+              <p class="text-gray-600 leading-relaxed mb-4">
+                <strong>Trading card games</strong> have experienced exponential growth in recent years. What started as a niche hobby in the 1990s has become a global phenomenon that attracts millions of people of all ages. <strong>Pokémon TCG</strong> leads this wave with millions of players, collectors and tournaments around the world. Buying cards today means not only enjoying a strategic game, but also being part of a global community that combines nostalgia, competition and investment opportunities.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Buying TCGs today is much more than acquiring cards: it is entering an ecosystem where <strong>strategy</strong>, <strong>collecting</strong> and <strong>investment</strong> converge. You can build a competitive deck to play at your local store, seek rare cards to complete your collection, or bet on pieces that may increase in value over time. Every opened pack, every trade and every match provides a unique experience unlike any other hobby.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                The appeal of TCGs also lies in their <strong>accessibility</strong>. You do not need to invest a fortune to start. A starter deck, a few packs and the desire to learn are enough to start enjoying. As you gain experience, you can delve deeper into the metagame, discover rarer cards and participate in events that connect you with other players.
+              </p>
+              <p class="text-gray-600 leading-relaxed mb-6">
+                In addition, the secondary market for cards has shown real potential. Vintage Pokémon cards, special editions of Magic and limited promotions from other TCGs have reached considerable values. That does not mean every card is a safe investment, but there is a real opportunity for those who study the market, keep their cards in good condition and understand collecting trends.
+              </p>
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start gap-3 text-gray-600">
+                  <span class="text-brand-red text-xl shrink-0">✓</span>
+                  <span>Active community throughout Latin America with tournaments and official events.</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                  <span class="text-brand-red text-xl shrink-0">✓</span>
+                  <span>Constant content: new expansions, mechanics and formats that renew the game.</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                  <span class="text-brand-red text-xl shrink-0">✓</span>
+                  <span>Possibility to collect for nostalgia, play competitively or diversify your investment.</span>
+                </li>
+              </ul>
+              <p class="text-gray-600 leading-relaxed">
+                At tcglat we want to be your guide in this world. Here you will find price analysis, buying guides, metagame strategies and tips so that every card you buy has a clear purpose. If you still do not know where to start, explore our beginner guides and discover why millions of people already belong to the TCG universe.
+              </p>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center">
+              <img
+                src="/images/tipos-cartas-pokemon.svg"
+                alt="Different types of Pokémon TCG cards"
+                class="w-full max-w-md rounded-2xl"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FAQ -->
+    <div class="border-t border-gray-200 pt-10 mt-8">
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
+        Frequently Asked Questions about TCGs
+      </h2>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">What is a TCG (Trading Card Game)?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            A TCG or collectible card game is a strategy game where players build decks with cards they buy or trade. Each card represents creatures, magic or other elements, and the goal is to defeat the opponent by reducing their life points or meeting other victory conditions.
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">What are the most popular TCGs?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            The most important TCGs in the world are: <strong>Pokémon TCG</strong> (historically the best-selling), <strong>Magic: The Gathering</strong> (created in 1993 and considered the precursor of all TCGs), <strong>Yu-Gi-Oh!</strong> (a global phenomenon especially in Asia and America), <strong>Disney Lorcana</strong> (the newest TCG with the highest growth) and <strong>One Piece Card Game</strong> (based on Japan's most popular anime).
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">Is investing in TCG cards safe?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Investing in TCGs can be profitable, but it carries risks. Some rare cards have appreciated significantly (such as first edition Pokémon cards or Magic's Black Lotus), but the market is volatile and many cards lose value over time. It is important to research, know metagame trends and treat investment as a complement, not a main source of income.
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">What is the best way to start with TCGs?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            The best way is to choose a game you are passionate about and start with a starter deck (Theme Deck). Take time to learn the basic rules, play with friends or at local tournaments, and gradually expand your collection. You do not need to spend a lot at first; practice and strategy are more important than the most expensive cards.
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">Do TCG cards work in official tournaments?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            Yes, but each TCG has its own formats and restrictions. The most common formats are <strong>Standard</strong> (only recent expansions) and <strong>Expanded</strong> (more historical). Each game has official organizations: Play! Pokémon for Pokémon, competitive REL for Magic, and similar systems for Yu-Gi-Oh! and Lorcana. To play in tournaments, cards must be in playable condition (without damage that affects the opponent's deck).
+          </div>
+        </details>
+
+        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+            <span class="font-semibold text-gray-800">Which TCG should I choose: Pokémon, Magic, Yu-Gi-Oh!, Lorcana or One Piece?</span>
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600">
+            It depends on your preferences: <strong>Pokémon</strong> is ideal for beginners and casual collectors. <strong>Magic</strong> offers the greatest strategic depth and variety of formats. <strong>Yu-Gi-Oh!</strong> is perfect for those seeking fast action and spectacular combos. <strong>Lorcana</strong> combines Disney magic with modern mechanics. <strong>One Piece</strong> is ideal for anime fans. All have active communities in Latin America!
+          </div>
+        </details>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

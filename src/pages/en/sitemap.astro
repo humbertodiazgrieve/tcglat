@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('postsEn');
+const postsSorted = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const types = ['pokemon', 'yugioh', 'magic', 'lorcana', 'onepiece'];
+const categories = ['news', 'guides', 'strategy', 'analysis'];
+
+const staticPages = [
+  { url: '/en', title: 'Home' },
+  { url: '/en/about', title: 'About' },
+  { url: '/en/contact', title: 'Contact' },
+  { url: '/en/privacy', title: 'Privacy' },
+  { url: '/en/sitemap', title: 'Site Map' }
+];
+
+const typeNames: Record<string, string> = {
+  pokemon: 'Pokémon TCG',
+  yugioh: 'Yu-Gi-Oh!',
+  magic: 'Magic: The Gathering',
+  lorcana: 'Disney Lorcana',
+  onepiece: 'One Piece Card Game'
+};
+
+const categoryNames: Record<string, string> = {
+  news: 'News',
+  guides: 'Guides',
+  strategy: 'Strategy',
+  analysis: 'Analysis'
+};
+
+const postsByType = types.map(type => ({
+  type,
+  name: typeNames[type],
+  posts: postsSorted.filter(p => p.data.type === type)
+}));
+---
+
+<BaseLayout
+  title="Site Map | tcglat"
+  description="Site map of tcglat. Explore all pages, categories, and articles about TCG in English."
+>
+  <Header />
+
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14">
+    <div class="max-w-3xl mx-auto text-center mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Site <span class="text-brand-red">Map</span>
+      </h1>
+      <p class="text-gray-600">
+        Browse all sections and articles of tcglat. Easily find content about Pokémon, Magic, Yu-Gi-Oh!, Lorcana, and One Piece.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Main pages -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+          Main pages
+        </h2>
+        <ul class="space-y-3">
+          {staticPages.map(page => (
+            <li>
+              <a
+                href={page.url}
+                class="text-sm text-gray-600 hover:text-brand-red transition-colors"
+              >
+                {page.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- TCGs -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+          TCGs
+        </h2>
+        <ul class="space-y-3">
+          {types.map(type => (
+            <li>
+              <a
+                href={`/en/${type}`}
+                class="text-sm text-gray-600 hover:text-brand-red transition-colors capitalize"
+              >
+                {typeNames[type]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+          Categories by TCG
+        </h2>
+        <ul class="space-y-2">
+          {types.map(type => (
+            <>
+              <li class="pt-2">
+                <span class="text-sm font-semibold text-gray-800">{typeNames[type]}</span>
+              </li>
+              {categories.map(category => (
+                <li class="pl-3">
+                  <a
+                    href={`/en/${type}/${category}`}
+                    class="text-sm text-gray-500 hover:text-brand-red transition-colors"
+                  >
+                    {categoryNames[category]}
+                  </a>
+                </li>
+              ))}
+            </>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Articles by TCG -->
+      {postsByType.map(({ type, name, posts }) => (
+        posts.length > 0 && (
+          <div class="bg-white border border-gray-200 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4 pb-3 border-b border-gray-100">
+              {name}
+            </h2>
+            <ul class="space-y-3">
+              {posts.map(post => (
+                <li>
+                  <a
+                    href={`/en/${post.data.type}/${post.data.category}/${post.slug}`}
+                    class="text-sm text-gray-600 hover:text-brand-red transition-colors line-clamp-2"
+                  >
+                    {post.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

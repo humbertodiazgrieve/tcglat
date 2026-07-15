@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import PostCardEn from '../../../components/PostCardEn.astro';
+import SidebarEn from '../../../components/SidebarEn.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('postsEn');
+  const types = ['pokemon', 'yugioh', 'magic', 'lorcana', 'onepiece'];
+  const categories = ['news', 'guides', 'strategy', 'analysis'];
+
+  const paths = [];
+
+  for (const type of types) {
+    for (const cat of categories) {
+      const typePosts = posts.filter(p => p.data.type === type && p.data.category === cat);
+      paths.push({
+        params: { type, category: cat },
+        props: {
+          type,
+          category: cat,
+          posts: typePosts
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { type, category, posts } = Astro.props;
+
+const typesInfo = {
+  pokemon: { name: 'Pokémon TCG', color: 'bg-yellow-500' },
+  yugioh: { name: 'Yu-Gi-Oh!', color: 'bg-purple-600' },
+  magic: { name: 'Magic: The Gathering', color: 'bg-gray-700' },
+  lorcana: { name: 'Disney Lorcana', color: 'bg-amber-400' },
+  onepiece: { name: 'One Piece Card Game', color: 'bg-red-600' },
+};
+
+const info = typesInfo[type];
+const categoryLabels: Record<string, string> = {
+  news: 'News',
+  guides: 'Guides',
+  strategy: 'Strategy',
+  analysis: 'Analysis'
+};
+const title = categoryLabels[category];
+
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const otherCategories = ['news', 'guides', 'strategy', 'analysis'].filter(c => c !== category);
+
+const seoTexts: Record<string, Record<string, string>> = {
+  pokemon: {
+    news: `Stay up to date with the latest Pokémon TCG news at tcglat. The world of trading card games is constantly evolving with new expansions, official announcements, international tournaments, and metagame changes. In this section we gather the most relevant information for English-speaking players and collectors, with clear and updated analysis of what is happening in the Pokémon universe. From new sets and promotional cards to prerelease events and competition results, here you will find everything you need to know so you do not miss any detail. Our goal is to keep you informed with accurate, useful content designed for the TCG community.`,
+    guides: `Discover complete Pokémon TCG guides to improve as a player, collector, or investor. At tcglat we explain everything from basic rules for beginners to advanced strategies for competing in local and international tournaments. Learn how to build solid decks, identify valuable cards, organize your collection, and buy sealed products smartly. We also cover topics like rarities, card types, legal formats, and tips to protect your pieces. Each guide is written in English and designed to provide real value, whether you play casually or aim to stand out in competitive play.`,
+    strategy: `Master the Pokémon TCG metagame with deep and updated strategic analysis. In this tcglat section you will find articles dedicated to the best decks of the moment, card synergies, counter matchups, and key decisions to win more matches. We analyze popular archetypes, key cards of each format, and how to take advantage of the latest Scarlet and Violet mechanics. Whether you compete in Play! Pokémon, local tournaments, or simply want to improve your games against friends, here you have practical content to level up.`,
+    analysis: `Explore detailed analysis of the Pokémon universe at tcglat. From the history of the video games and generations of creatures to the value of specific cards and trends in the collectibles market, this section deepens into the topics that most interest fans. We examine iconic characters, regions, competitive mechanics, and the cultural impact of the franchise. Each article is designed to offer perspective, useful data, and curiosities that enrich your experience as a player, collector, or Pokémon follower.`
+  },
+  yugioh: {
+    news: `Get the latest Yu-Gi-Oh! news in English with tcglat. We cover new expansion releases, banlist changes, collectible product announcements, and relevant events from Konami’s most popular card game. Our team selects the most important information for players and collectors, presenting it clearly and accessibly. If you want to stay up to date on the metagame, tournaments, and news from the Yu-Gi-Oh! universe, this section is your constant reference point.`,
+    guides: `Learn to play Yu-Gi-Oh! and master its rules with tcglat guides. From basic concepts like summoning, card types, and turn phases, to more advanced strategies for building competitive decks. We explain how the Extra Deck works, Link, Synchro, and Xyz mechanics, and what to consider when buying boosters or singles. Our guides are aimed at both new players who need a solid foundation and experienced duelists looking to perfect their knowledge of the game.`,
+    strategy: `Improve your level in Yu-Gi-Oh! with strategic analysis from tcglat. We study the most competitive decks of the format, popular combos, tech choices, and how to face dominant archetypes. Understanding the metagame, anticipating the opponent’s plays, and optimizing every resource are fundamental skills in a game as fast as Yu-Gi-Oh!. Here you will find practical articles that help you make better decisions during your duels and prepare for local and regional tournaments.`,
+    analysis: `Dive into the analysis of the Yu-Gi-Oh! universe at tcglat. We review the history of the game, iconic archetypes, mythic cards, and the impact of the anime and manga on the TCG. We also analyze the value of special cards, collector products, and the state of the secondary market. If you are a fan of the franchise, this section offers deep content, curiosities, and reflections on one of the most influential card games in history.`
+  },
+  magic: {
+    news: `The latest Magic: The Gathering news arrives at tcglat in English. From new set and collaborative expansion announcements to format changes, prerelease events, and competitive tournament results. Magic remains the deepest and most established TCG on the market, with an ecosystem that keeps growing. In this section we keep you informed about everything you need to know to play, collect, or invest in Magic cards, with analysis designed for English-speaking players and collectors.`,
+    guides: `Learn to play Magic: The Gathering with complete guides in English. We explain the essential concepts: card types, turn phases, mana, colors of magic, play formats, and how to build your first deck. We also cover topics like Commander, Standard, Draft, and Sealed, plus tips for buying products, organizing your collection, and protecting your cards. Whether you are starting or want to deepen the most influential game in history, here you will find useful and well-structured content.`,
+    strategy: `Develop your competitive skill in Magic: The Gathering with strategic analysis from tcglat. We study metagame archetypes, deck building, sideboarding, and key decisions in each phase of the match. Magic demands planning, knowledge of interactions, and adaptability, qualities you can improve with practice and good information. Our articles help you understand which cards and strategies work in each format so you face your tournaments with greater confidence.`,
+    analysis: `We deeply analyze the Magic: The Gathering universe at tcglat. From the history of the game and its most iconic planes to the value of reserved cards, special editions, and market trends. Magic is not just a game: it is a cultural phenomenon that has defined the TCG genre for decades. In this section we explore the lore, mechanics, collector products, and everything that makes Magic a unique experience for players and investors.`
+  },
+  lorcana: {
+    news: `Discover the latest Disney Lorcana news at tcglat. The most successful TCG of recent years continues to grow with new sets, promotional cards, organized events, and collaborations. Stay informed about releases, metagame changes, and news from the game that combines Disney magic with trading card strategy. Our English coverage brings you the essential information to play and collect Lorcana smartly.`,
+    guides: `Learn to play Disney Lorcana with our English guides. We explain the basic rules, card types, ink mechanic, character challenges, and how to build a balanced deck. Lorcana is a game accessible to beginners but with enough depth for competitive players. Here you will find tips to start, draft strategies, and recommendations for buying boosters and collector products in your region.`,
+    strategy: `Improve your performance in Disney Lorcana with strategic analysis from tcglat. We study the most effective characters and songs, color synergies, board control, and challenge timing. Knowing the metagame and taking advantage of your cards’ abilities is key to winning matches. Our articles offer decks, ideas, and practical advice to compete in local events and tournaments in your community.`,
+    analysis: `Explore the world of Disney Lorcana from an analytical perspective at tcglat. We review the evolution of the game, artist illustrations, card design, product value, and Lorcana’s impact on the TCG market. If you are interested in understanding beyond the rules, this section offers articles about lore, collecting trends, and Lorcana’s position compared to other card games.`
+  },
+  onepiece: {
+    news: `Stay informed about One Piece Card Game with tcglat news. The card game based on Japan’s most popular anime never stops growing, with new expansions, official events, and constant announcements. In this section you will find updated information about releases, metagame, and TCG news, presented in English for players around the world.`,
+    guides: `Learn to play One Piece Card Game with our English guides. We explain the basic concepts: card types, leaders, dons, attack, block, and how to build your first deck. One Piece TCG combines passion for the anime with a dynamic and exciting mechanic. Here you will find tips to start, product recommendations, and strategies to enjoy the game from your first matches.`,
+    strategy: `Master the One Piece Card Game metagame with strategic analysis from tcglat. We study popular leaders, color combinations, attack and defense timings, and how to build competitive decks. Every decision counts in this fast and aggressive game, so we offer practical content to improve your win rate and prepare for local tournaments and community events.`,
+    analysis: `We analyze the One Piece Card Game universe at tcglat. From its connection with the anime and manga to card design, collection value, and evolution of the game. One Piece TCG has conquered fans around the world with its theme, art, and gameplay. In this section we explore what makes this game special and its place within the current collectible card game landscape.`
+  }
+};
+
+const seoText = seoTexts[type]?.[category] || `Explore ${title} of ${info.name} at tcglat. Content in English about trading card games for players and collectors around the world.`;
+---
+
+<BaseLayout title={`${title} of ${info.name} | tcglat.com`} description={`${title} articles about ${info.name}`}>
+  <Header />
+
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+      <a href="/en" class="hover:text-brand-red">Home</a>
+      <span>/</span>
+      <a href={`/en/${type}`} class="hover:text-brand-red flex items-center gap-1">
+        <span class={`w-2 h-2 rounded-full ${info.color}`}></span>
+        {info.name}
+      </a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">{title}</span>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+        {title} <span class="text-brand-red">{info.name}</span>
+      </h1>
+      <p class="text-sm text-gray-500 mb-4">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
+      <p class="text-gray-600 leading-relaxed max-w-4xl">
+        {seoText}
+      </p>
+    </header>
+
+    <!-- Quick links to other categories -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      {otherCategories.map(cat => (
+        <a
+          href={`/en/${type}/${cat}`}
+          class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors"
+        >
+          {categoryLabels[cat]}
+        </a>
+      ))}
+      <a
+        href={`/en/${type}`}
+        class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors"
+      >
+        View all
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <!-- Main content -->
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          {sortedPosts.length === 0 ? (
+            <p class="text-center text-gray-500 py-12 col-span-2">No articles in this category.</p>
+          ) : (
+            sortedPosts.map(post => <PostCardEn post={post} type={type} />)
+          )}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-20">
+          <SidebarEn type={type} />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

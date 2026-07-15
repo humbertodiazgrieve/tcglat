@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Beginner's Guide to Magic: The Gathering">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2937" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="mana-w" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f3f4f6" />
+      <stop offset="100%" stop-color="#d1d5db" />
+    </linearGradient>
+    <linearGradient id="mana-u" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="mana-b" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4b5563" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="mana-r" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f87171" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    <linearGradient id="mana-g" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="100%" stop-color="#16a34a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)" />
+
+  <g transform="translate(100, 80)" opacity="0.15">
+    <polygon points="0,0 60,0 30,52" fill="#ffffff" transform="translate(0,0)" />
+    <polygon points="0,0 60,0 30,52" fill="#ffffff" transform="translate(80,0)" />
+    <polygon points="0,0 60,0 30,52" fill="#ffffff" transform="translate(160,0)" />
+    <polygon points="0,0 60,0 30,52" fill="#ffffff" transform="translate(240,0)" />
+    <polygon points="0,0 60,0 30,52" fill="#ffffff" transform="translate(320,0)" />
+  </g>
+
+  <g transform="translate(400, 220)" text-anchor="middle">
+    <circle cx="-120" cy="0" r="42" fill="url(#mana-w)" stroke="#ffffff" stroke-width="3" />
+    <text x="-120" y="10" font-family="serif" font-size="42" font-weight="bold" fill="#374151" text-anchor="middle">W</text>
+
+    <circle cx="-60" cy="-70" r="42" fill="url(#mana-u)" stroke="#1e3a8a" stroke-width="3" />
+    <text x="-60" y="-60" font-family="serif" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">U</text>
+
+    <circle cx="60" cy="-70" r="42" fill="url(#mana-b)" stroke="#000000" stroke-width="3" />
+    <text x="60" y="-60" font-family="serif" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">B</text>
+
+    <circle cx="120" cy="0" r="42" fill="url(#mana-r)" stroke="#7f1d1d" stroke-width="3" />
+    <text x="120" y="10" font-family="serif" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">R</text>
+
+    <circle cx="0" cy="80" r="42" fill="url(#mana-g)" stroke="#14532d" stroke-width="3" />
+    <text x="0" y="90" font-family="serif" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">G</text>
+  </g>
+
+  <text x="400" y="360" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#f9fafb" text-anchor="middle">
+    How to play Magic: The Gathering
+  </text>
+  <text x="400" y="395" font-family="system-ui, sans-serif" font-size="16" fill="#9ca3af" text-anchor="middle">
+    Complete guide for beginners | tcglat.com
+  </text>
+
+  <rect x="0" y="0" width="800" height="6" fill="#4b5563" />
+  <rect x="0" y="444" width="800" height="6" fill="#4b5563" />
+</svg>

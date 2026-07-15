@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a1d6a"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="50" y="30" width="1100" height="570" rx="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <circle cx="200" cy="180" r="120" fill="#51CF66" opacity="0.3"/>
+  <circle cx="1000" cy="450" r="180" fill="#40C057" opacity="0.2"/>
+  <circle cx="150" cy="500" r="80" fill="#69DB7C" opacity="0.25"/>
+  <circle cx="1050" cy="150" r="100" fill="#2F9E44" opacity="0.2"/>
+  <path d="M400 300 Q450 200 600 180 Q750 200 800 300 Q850 400 600 450 Q350 400 400 300 Z" fill="#2F9E44" opacity="0.4"/>
+  <path d="M450 280 Q480 220 600 210 Q720 220 750 280 Q780 340 600 370 Q420 340 450 280 Z" fill="#69DB7C" opacity="0.5"/>
+  <path d="M520 150 L550 200 L530 200 Z" fill="#40C057"/>
+  <path d="M680 150 L710 200 L690 200 Z" fill="#40C057"/>
+  <path d="M600 140 L630 190 L600 190 Z" fill="#40C057"/>
+  <circle cx="350" cy="350" r="40" fill="#74C0FC" opacity="0.4"/>
+  <circle cx="850" cy="300" r="30" fill="#FFE066" opacity="0.4"/>
+  <circle cx="400" cy="450" r="25" fill="#FF6B6B" opacity="0.3"/>
+  <text x="600" y="280" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="bold" fill="#fbbf24">Grass Type</text>
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#e9d5ff">Pokémon</text>
+  <text x="600" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.6)">tcglat.com</text>
+</svg>

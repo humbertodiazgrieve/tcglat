@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCardEn from '../../components/PostCardEn.astro';
+import SidebarEn from '../../components/SidebarEn.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const types = ['pokemon', 'yugioh', 'magic', 'lorcana', 'onepiece'];
+  return types.map(type => ({
+    params: { type },
+    props: { type }
+  }));
+}
+
+const { type } = Astro.props;
+
+const typesInfo = {
+  pokemon: { name: 'Pokémon TCG', description: 'The most iconic trading card game in the world', color: 'bg-yellow-500' },
+  yugioh: { name: 'Yu-Gi-Oh!', description: 'The definitive collectible card game', color: 'bg-purple-600' },
+  magic: { name: 'Magic: The Gathering', description: 'The precursor of all TCGs', color: 'bg-gray-700' },
+  lorcana: { name: 'Disney Lorcana', description: 'Where Disney magic meets strategy', color: 'bg-amber-400' },
+  onepiece: { name: 'One Piece Card Game', description: 'Embark on a pirate adventure', color: 'bg-red-600' },
+};
+
+const info = typesInfo[type];
+
+const allPosts = await getCollection('postsEn');
+const posts = allPosts
+  .filter(post => post.data.type === type)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const categories = ['news', 'guides', 'strategy', 'analysis'];
+const categoryLabels: Record<string, string> = {
+  news: 'News',
+  guides: 'Guides',
+  strategy: 'Strategy',
+  analysis: 'Analysis'
+};
+
+const seoTexts: Record<string, string> = {
+  pokemon: `Pokémon TCG is the most iconic trading card game in the world. Since its release in 1996, it has gathered millions of players and collectors on every continent, becoming one of the most beloved franchises in history. At tcglat you will find complete content to make the most of this experience: beginner guides, card and rarity analysis, metagame strategies, expansion news, and tips for buying, organizing, and protecting your collection. Pokémon is not just nostalgia: it is a living competitive game with official tournaments, prerelease events, and a constantly growing community across Latin America and Spain.`,
+  yugioh: `Yu-Gi-Oh! is one of the most exciting and competitive collectible card games in the world. Based on the popular manga and anime franchise, this TCG stands out for its fast pace, spectacular combos, and huge number of available archetypes. At tcglat we cover everything you need to know to play Yu-Gi-Oh!: from basic rules and summoning types to metagame analysis, deck strategies, and news about banlists and expansions. Whether you are a beginner duelist or a competitive player, here you will find practical content in English to improve your matches.`,
+  magic: `Magic: The Gathering is the precursor of all trading card games and remains a mandatory reference three decades after its creation. Its strategic depth, variety of formats, and lore universe make it the favorite TCG of millions of players. At tcglat you will find beginner guides, analysis of formats like Standard, Commander, and Draft, news about new expansions, and tips for building competitive decks. We also cover the collector side of Magic, with articles about valuable cards, special products, and secondary market trends.`,
+  lorcana: `Disney Lorcana is the most successful collectible card game of recent years. With a unique mix of Disney magic and modern mechanics, it has conquered players and collectors around the world. At tcglat we help you discover everything about Lorcana: how to play, basic rules, card types, deck building, and strategies by color. We also cover news about new sets, official events, and the collector appeal of iconic character illustrations. If you want to start in Lorcana or improve your level, this is your space in English.`,
+  onepiece: `One Piece Card Game brings the adventure of Japan's most popular anime to the collectible card game format. With dynamic mechanics, leaders based on iconic characters, and a don system that accelerates the action, this TCG has gained a huge community in a short time. At tcglat you will find guides to learn how to play, analysis of colors and leaders, metagame strategies, and news about expansions and events. Whether you are a One Piece fan or simply looking for a fun and competitive TCG, here you have content designed for English speakers.`
+};
+
+const seoText = seoTexts[type] || `Discover everything about ${info.name} at tcglat. Content in English about trading card games for players and collectors around the world.`;
+
+const faqsByType: Record<string, { question: string; answer: string }[]> = {
+  pokemon: [
+    { question: 'What is Pokémon TCG?', answer: 'Pokémon TCG is the official Pokémon trading card game. Players build decks with Pokémon, Trainer, and Energy cards to compete in matches where the goal is to take all six of the opponent’s Prize cards or meet special conditions.' },
+    { question: 'How do I start playing Pokémon TCG?', answer: 'The best way to start is with a starter deck or Theme Deck, which includes everything you need to play. You can also learn the basic rules in our beginner guides and practice with friends or at local events.' },
+    { question: 'Where can I buy Pokémon TCG cards?', answer: 'You can buy cards at specialized stores, major chains, and online stores. At tcglat we have buying guides for several countries with recommendations for reliable stores.' },
+    { question: 'Can Pokémon cards increase in value?', answer: 'Yes, some rare, promotional, or older edition cards can increase in value over time. However, not all cards are a safe investment: condition, rarity, and market demand strongly influence their price.' }
+  ],
+  yugioh: [
+    { question: 'What is Yu-Gi-Oh! TCG?', answer: 'Yu-Gi-Oh! TCG is a collectible card game based on the manga and anime franchise. Two players face off using decks of monsters, spells, and traps, trying to reduce the opponent’s life points to zero or meet special win conditions.' },
+    { question: 'What are the summoning types in Yu-Gi-Oh!?', answer: 'Summoning types include Normal, Special, Tribute, Fusion, Synchro, Xyz, Pendulum, Link, and Ritual. Each one requires specific conditions and allows very different strategies within the game.' },
+    { question: 'How is the competitive format played?', answer: 'The most common format is Advanced, with a banlist that limits or forbids certain cards. Official tournaments follow Konami rules and are played in Swiss rounds followed by a top cut.' },
+    { question: 'Where can I buy Yu-Gi-Oh! cards?', answer: 'Yu-Gi-Oh! cards are sold at specialized stores, events, and online platforms. It is important to buy from reliable sites to avoid counterfeit or damaged cards.' }
+  ],
+  magic: [
+    { question: 'What is Magic: The Gathering?', answer: 'Magic: The Gathering is the first trading card game in history. Players use decks of cards to cast spells, summon creatures, and activate artifacts, with the goal of reducing the opponent’s life to zero.' },
+    { question: 'What are the formats of Magic?', answer: 'The most popular formats are Standard, Pioneer, Modern, Legacy, Commander, Draft, and Sealed. Each one has different rules about which cards are allowed and how decks are built.' },
+    { question: 'How do I start playing Magic?', answer: 'You can start with a preconstructed deck, a Planeswalker Deck, or participate in a Draft event at your local store. Learning the turn phases and the mana system is the first fundamental step.' },
+    { question: 'Where can I buy Magic cards?', answer: 'Magic cards are bought at specialized stores, events, and online marketplaces. Singles are the best option for building specific decks, while boosters and boxes are ideal for draft and collection.' }
+  ],
+  lorcana: [
+    { question: 'What is Disney Lorcana?', answer: 'Disney Lorcana is a trading card game where Disney characters come to life as glimmers. Players use ink to play characters, items, and actions, trying to gain lore and reach victory.' },
+    { question: 'How do you play Lorcana?', answer: 'Each player uses a 60-card deck and a character as leader. The goal is to obtain 20 lore points. Cards are played by paying their cost with ink, and characters can sing, challenge, or quest.' },
+    { question: 'What are the colors of Lorcana?', answer: 'Lorcana has six colors: Amber, Amethyst, Emerald, Ruby, Sapphire, and Steel. Each color represents a different philosophy and mechanic, allowing diverse deck strategies.' },
+    { question: 'Where can I buy Lorcana products?', answer: 'Lorcana products are sold at specialized stores, major chains, and official events. Due to high demand, some products may be limited, so it is worth keeping an eye on releases.' }
+  ],
+  onepiece: [
+    { question: 'What is One Piece Card Game?', answer: 'One Piece Card Game is a collectible card game based on the One Piece anime and manga. Players use a leader, character cards, events, and stages to reduce the opponent’s life or meet objectives.' },
+    { question: 'How do you play One Piece TCG?', answer: 'Each player chooses a leader and builds a 50-card deck. The game uses dons to increase power, block attacks, and activate abilities. The goal is to reduce the opponent’s life to zero or exhaust their deck.' },
+    { question: 'What are the colors in One Piece TCG?', answer: 'One Piece TCG has five colors: Red, Green, Blue, Purple, and Black. Each color is associated with different archetypes, characters, and playstyles.' },
+    { question: 'Where can I buy One Piece cards?', answer: 'One Piece TCG cards are available at specialized stores, official events, and online stores. We recommend buying from authorized distributors to guarantee original products.' }
+  ]
+};
+
+const faqs = faqsByType[type] || [];
+---
+
+<BaseLayout title={`${info.name} | tcglat.com`} description={`Everything about ${info.name}: ${info.description}`}>
+  <Header />
+
+  <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10">
+    <!-- TCG Header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-3">
+        <span class={`w-4 h-4 rounded-full ${info.color}`}></span>
+        <span class="text-sm font-medium text-gray-500">{info.name}</span>
+      </div>
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{info.name}</h1>
+      <p class="text-gray-600 mb-4">{info.description}</p>
+      <p class="text-gray-600 leading-relaxed max-w-4xl">{seoText}</p>
+    </div>
+
+    <!-- Quick Links by Category -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      {categories.map(cat => {
+        const catPosts = posts.filter(p => p.data.category === cat);
+        return (
+          <a
+            href={`/en/${type}/${cat}`}
+            class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors"
+          >
+            {categoryLabels[cat]} ({catPosts.length})
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+      <!-- Main content -->
+      <div class="lg:col-span-8">
+        <h2 class="text-lg font-bold text-gray-900 mb-6">Latest articles</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          {posts.length === 0 ? (
+            <p class="text-center text-gray-500 py-12 col-span-2">No articles yet for this TCG. Coming soon!</p>
+          ) : (
+            posts.map(post => <PostCardEn post={post} type={type} />)
+          )}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-20">
+          <SidebarEn type={type} />
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    {faqs.length > 0 && (
+      <div class="border-t border-gray-200 pt-10 mt-12">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">
+            Frequently asked questions about {info.name}
+          </h2>
+          <div class="space-y-4">
+            {faqs.map(faq => (
+              <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+                <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                  <span class="font-semibold text-gray-800">{faq.question}</span>
+                  <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div class="px-5 pb-5 text-gray-600">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

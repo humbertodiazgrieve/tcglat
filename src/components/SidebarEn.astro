@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+
+const { type } = Astro.props;
+
+let posts = (await getCollection('postsEn')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+if (type) {
+  posts = posts.filter(post => post.data.type === type);
+}
+
+const categories = ['news', 'guides', 'strategy', 'analysis'];
+const categoryLabels: Record<string, string> = {
+  news: 'News',
+  guides: 'Guides',
+  strategy: 'Strategy',
+  analysis: 'Analysis'
+};
+
+const recentPosts = posts.slice(0, 5);
+
+const typesInfo = {
+  pokemon: { name: 'Pokémon TCG', color: 'bg-yellow-500' },
+  yugioh: { name: 'Yu-Gi-Oh!', color: 'bg-purple-600' },
+  magic: { name: 'Magic: The Gathering', color: 'bg-gray-700' },
+  lorcana: { name: 'Disney Lorcana', color: 'bg-amber-400' },
+  onepiece: { name: 'One Piece Card Game', color: 'bg-red-600' },
+};
+
+const getLink = (cat: string, slug: string) => {
+  if (type) {
+    return `/en/${type}/${cat}/${slug}`;
+  }
+  return `/en/blog/${cat}/${slug}`;
+};
+---
+
+<aside class="space-y-6">
+  <!-- Search -->
+  <div class="bg-white rounded-xl border border-gray-200 p-5">
+    <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Search</h3>
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="Search articles..."
+        class="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg bg-gray-50 focus:outline-none focus:bg-white focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
+      />
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- TCG Selector (if no type selected) -->
+  {!type && (
+    <div class="bg-white rounded-xl border border-gray-200 p-5">
+      <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">My TCG</h3>
+      <div class="flex flex-col gap-2">
+        {Object.entries(typesInfo).map(([key, info]) => (
+          <a
+            href={`/en/${key}`}
+            class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+          >
+            <span class={`w-3 h-3 rounded-full ${info.color}`}></span>
+            {info.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <!-- Categories -->
+  <div class="bg-white rounded-xl border border-gray-200 p-5">
+    <h3 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Categories</h3>
+    <div class="flex flex-wrap gap-2">
+      {categories.map(cat => {
+        const catPosts = posts.filter(p => p.data.category === cat);
+        const href = type ? `/en/${type}/${cat}` : `/en/blog/category/${cat}`;
+        return (
+          <a
+            href={href}
+            class="px-4 py-2 text-xs font-medium bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-colors"
+          >
+            {categoryLabels[cat]} ({catPosts.length})
+          </a>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="bg-white rounded-xl border border-gray-200 p-5">
+    <h3 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Recent posts</h3>
+    <ul class="space-y-4">
+      {recentPosts.map(post => (
+        <li>
+          <a href={getLink(post.data.category, post.slug)} class="group flex gap-3">
+            {post.data.image && (
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-16 h-14 object-cover rounded-lg flex-shrink-0"
+              />
+            )}
+            <div>
+              <h4 class="text-sm font-semibold text-gray-800 group-hover:text-brand-red transition-colors line-clamp-2 leading-snug">
+                {post.data.title}
+              </h4>
+              <time class="text-xs text-gray-400 mt-1 block">
+                {new Date(post.data.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
+              </time>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</aside>

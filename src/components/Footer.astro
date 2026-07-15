@@ -1,5 +1,33 @@
 ---
 const currentYear = new Date().getFullYear();
+const { pathname } = Astro.url;
+const isEnglish = pathname.startsWith('/en/') || pathname === '/en';
+
+const homeLink = isEnglish ? '/en/' : '/';
+const footerTexts = isEnglish ? {
+  description: 'Your source in English for Trading Card Games. Strategies, news and guides for all players.',
+  tcgs: 'TCGs',
+  company: 'Company',
+  about: 'About',
+  contact: 'Contact',
+  privacy: 'Privacy',
+  sitemap: 'Site Map',
+  rights: `© ${currentYear} tcglat.com — All rights reserved`
+} : {
+  description: 'Tu fuente en español sobre Trading Card Games. Estrategias, noticias y guías para todos los jugadores.',
+  tcgs: 'TCGs',
+  company: 'Compañía',
+  about: 'Acerca de',
+  contact: 'Contacto',
+  privacy: 'Privacidad',
+  sitemap: 'Mapa de sitio',
+  rights: `© ${currentYear} tcglat.com — Todos los derechos reservados`
+};
+
+const aboutLink = isEnglish ? '/en/about' : '/about';
+const contactLink = isEnglish ? '/en/contact' : '/contacto';
+const privacyLink = isEnglish ? '/en/privacy' : '/privacidad';
+const sitemapLink = isEnglish ? '/en/sitemap' : '/mapa-de-sitio';
 ---
 
 <footer class="bg-white border-t border-gray-200 mt-16">
@@ -7,41 +35,41 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Marca -->
       <div>
-        <a href="/" class="text-xl font-bold text-gray-900">
+        <a href={homeLink} class="text-xl font-bold text-gray-900">
           tcglat<span class="text-brand-red">.com</span>
         </a>
         <p class="text-sm text-gray-500 mt-3 leading-relaxed">
-          Tu fuente en español sobre Trading Card Games. Estrategias, noticias y guías para todos los jugadores.
+          {footerTexts.description}
         </p>
       </div>
 
       <!-- Secciones -->
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">TCGs</h3>
+        <h3 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">{footerTexts.tcgs}</h3>
         <ul class="space-y-2">
-          <li><a href="/pokemon" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Pokémon TCG</a></li>
-          <li><a href="/yugioh" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Yu-Gi-Oh!</a></li>
-          <li><a href="/magic" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Magic: The Gathering</a></li>
-          <li><a href="/lorcana" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Disney Lorcana</a></li>
-          <li><a href="/onepiece" class="text-sm text-gray-500 hover:text-brand-red transition-colors">One Piece Card Game</a></li>
+          <li><a href={isEnglish ? '/en/pokemon' : '/pokemon'} class="text-sm text-gray-500 hover:text-brand-red transition-colors">Pokémon TCG</a></li>
+          <li><a href={isEnglish ? '/en/yugioh' : '/yugioh'} class="text-sm text-gray-500 hover:text-brand-red transition-colors">Yu-Gi-Oh!</a></li>
+          <li><a href={isEnglish ? '/en/magic' : '/magic'} class="text-sm text-gray-500 hover:text-brand-red transition-colors">Magic: The Gathering</a></li>
+          <li><a href={isEnglish ? '/en/lorcana' : '/lorcana'} class="text-sm text-gray-500 hover:text-brand-red transition-colors">Disney Lorcana</a></li>
+          <li><a href={isEnglish ? '/en/onepiece' : '/onepiece'} class="text-sm text-gray-500 hover:text-brand-red transition-colors">One Piece Card Game</a></li>
         </ul>
       </div>
 
       <!-- Compañía -->
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Compañía</h3>
+        <h3 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">{footerTexts.company}</h3>
         <ul class="space-y-2">
-          <li><a href="/about" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Acerca de</a></li>
-          <li><a href="/contacto" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Contacto</a></li>
-          <li><a href="/privacidad" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Privacidad</a></li>
-          <li><a href="/mapa-de-sitio" class="text-sm text-gray-500 hover:text-brand-red transition-colors">Mapa de sitio</a></li>
+          <li><a href={aboutLink} class="text-sm text-gray-500 hover:text-brand-red transition-colors">{footerTexts.about}</a></li>
+          <li><a href={contactLink} class="text-sm text-gray-500 hover:text-brand-red transition-colors">{footerTexts.contact}</a></li>
+          <li><a href={privacyLink} class="text-sm text-gray-500 hover:text-brand-red transition-colors">{footerTexts.privacy}</a></li>
+          <li><a href={sitemapLink} class="text-sm text-gray-500 hover:text-brand-red transition-colors">{footerTexts.sitemap}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="border-t border-gray-200 mt-8 pt-6">
       <p class="text-xs text-gray-400 text-center">
-        © {currentYear} tcglat.com — Todos los derechos reservados
+        {footerTexts.rights}
       </p>
     </div>
   </div>

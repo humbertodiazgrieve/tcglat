@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Disney Lorcana Colors">
+  <defs>
+    <linearGradient id="bg-lorcana-colors" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a044e" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-lorcana-colors)" />
+
+  <g transform="translate(400, 190)" text-anchor="middle">
+    <circle cx="-120" cy="0" r="40" fill="#f59e0b" />
+    <text x="-120" y="10" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Amber</text>
+
+    <circle cx="-40" cy="-70" r="40" fill="#9333ea" />
+    <text x="-40" y="-60" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Amethyst</text>
+
+    <circle cx="40" cy="-70" r="40" fill="#16a34a" />
+    <text x="40" y="-60" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Emerald</text>
+
+    <circle cx="120" cy="0" r="40" fill="#dc2626" />
+    <text x="120" y="10" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Ruby</text>
+
+    <circle cx="-80" cy="80" r="40" fill="#2563eb" />
+    <text x="-80" y="90" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Sapphire</text>
+
+    <circle cx="80" cy="80" r="40" fill="#64748b" />
+    <text x="80" y="90" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Steel</text>
+  </g>
+
+  <text x="400" y="330" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#fae8ff" text-anchor="middle">
+    Disney Lorcana Colors
+  </text>
+  <text x="400" y="365" font-family="system-ui, sans-serif" font-size="16" fill="#e9d5ff" text-anchor="middle">
+    Which deck to choose based on your style | tcglat.com
+  </text>
+
+  <rect x="0" y="0" width="800" height="6" fill="#d946ef" />
+  <rect x="0" y="444" width="800" height="6" fill="#d946ef" />
+</svg>
