@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DeckBuilder from '../components/deck-builder/DeckBuilder';
+---
+
+<BaseLayout
+  title="Deck Builder"
+  description="Crea, guarda y exporta mazos para Pokémon TCG, Yu-Gi-Oh!, Magic, Lorcana y One Piece Card Game con el deck builder de tcglat.com."
+>
+  <Header />
+  <DeckBuilder client:load />
+  <Footer />
+</BaseLayout>
