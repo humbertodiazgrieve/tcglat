@@ -19,6 +19,7 @@ const catMapEnToEs: Record<string, string> = {
 function toEnglishPath(path: string): string {
   const normalized = path.replace(/\/+$/, '');
   if (normalized === '' || normalized === '/') return '/en';
+  if (normalized === '/mazo') return '/en/deck';
   if (normalized.startsWith('/en')) return normalized;
   return `/en${normalized}`;
 }
@@ -26,6 +27,7 @@ function toEnglishPath(path: string): string {
 function toSpanishPath(path: string): string {
   const normalized = path.replace(/\/+$/, '');
   if (normalized === '/en' || normalized === '') return '/';
+  if (normalized === '/en/deck') return '/mazo';
   if (!normalized.startsWith('/en/')) return normalized;
 
   const rest = normalized.replace('/en/', '');
@@ -89,6 +91,11 @@ const t = isEnglish ? {
         </div>
       </div>
 
+      <!-- Deck Builder Link -->
+      <a href={isEnglish ? '/en/deck' : '/mazo'} class="text-sm text-gray-600 hover:text-brand-red transition-colors py-2">
+        Deck Builder
+      </a>
+
       <!-- Language Selector -->
       <div class="flex items-center gap-2 border-l border-gray-200 pl-6">
         <a
@@ -126,6 +133,11 @@ const t = isEnglish ? {
         {tipo.label}
       </a>
     ))}
+
+    <!-- Deck Builder Link Mobile -->
+    <a href={isEnglish ? '/en/deck' : '/mazo'} class="px-3 py-2.5 text-sm text-gray-700 hover:bg-gray-50 rounded-lg">
+      Deck Builder
+    </a>
 
     <!-- Language Selector Mobile -->
     <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-3">
